@@ -1,10 +1,17 @@
 "use client";
+import LogoutIcon from "@mui/icons-material/Logout";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { logoutUser } from "@/lib/api";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import StyledBadge from "@mui/material/Badge";
 export default function Navbar() {
+  const cartCount = useSelector((state) =>
+    state.cart.items.reduce((total, item) => total + item.quantity, 0)
+  );
   const [menuOpen, setMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const router = useRouter();
@@ -54,14 +61,6 @@ export default function Navbar() {
           {isLoggedIn && (
             <>
               <Link
-                href="/about"
-                className={`px-4 py-2 rounded-lg transition-colors text-gray-800 font-medium ${
-                  pathname === "/about" ? "bg-gray-200" : "hover:bg-gray-100"
-                }`}
-              >
-                About Us
-              </Link>
-              <Link
                 href="/products"
                 className={`px-4 py-2 rounded-lg transition-colors text-gray-800 font-medium ${
                   pathname === "/products" ? "bg-gray-200" : "hover:bg-gray-100"
@@ -69,6 +68,15 @@ export default function Navbar() {
               >
                 Products
               </Link>
+              <Link
+                href="/about"
+                className={`px-4 py-2 rounded-lg transition-colors text-gray-800 font-medium ${
+                  pathname === "/about" ? "bg-gray-200" : "hover:bg-gray-100"
+                }`}
+              >
+                About Us
+              </Link>
+
               <Link
                 href="/contact"
                 className={`px-4 py-2 rounded-lg transition-colors text-gray-800 font-medium ${
@@ -84,12 +92,19 @@ export default function Navbar() {
         {/* Desktop Auth Buttons */}
         <div className="hidden md:flex w-1/5 justify-evenly font-semibold">
           {isLoggedIn ? (
-            <button
-              onClick={handleLogout}
-              className="text-red-600 hover:underline"
-            >
-              Logout
-            </button>
+            <div className="flex items-center space-x-20">
+              <Link href="/carts">
+                <StyledBadge badgeContent={cartCount} color="secondary">
+                  <ShoppingCartIcon />
+                </StyledBadge>
+              </Link>
+              <button
+                onClick={handleLogout}
+                className="text-red-600  cursor-pointer hover:bg-red-50 rounded-lg p-2 transition-colors"
+              >
+                <LogoutIcon />
+              </button>
+            </div>
           ) : (
             <>
               <Link href="/login" className="text-blue-600 hover:underline">
@@ -145,16 +160,6 @@ export default function Navbar() {
             Home
           </Link>
 
-          <Link
-            href="/about"
-            className={`px-4 py-3 rounded-lg transition-colors text-gray-800 font-medium ${
-              pathname === "/about" ? "bg-gray-100" : "hover:bg-gray-100"
-            }`}
-            onClick={() => setMenuOpen(false)}
-          >
-            About Us
-          </Link>
-
           {/* Products */}
           <Link
             href="/products"
@@ -164,6 +169,15 @@ export default function Navbar() {
             onClick={() => setMenuOpen(false)}
           >
             Products
+          </Link>
+          <Link
+            href="/about"
+            className={`px-4 py-3 rounded-lg transition-colors text-gray-800 font-medium ${
+              pathname === "/about" ? "bg-gray-100" : "hover:bg-gray-100"
+            }`}
+            onClick={() => setMenuOpen(false)}
+          >
+            About Us
           </Link>
 
           {/* Contact */}

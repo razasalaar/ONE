@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
+import { addToCart } from "../../redux/Cartslice";
 import { useDispatch } from "react-redux";
 
 export default function ProductCard({ product }) {
