@@ -40,6 +40,9 @@ export default function SignupForm() {
       return;
     }
 
+
+
+    
     mutate({ username, email, password });
   };
   return (
