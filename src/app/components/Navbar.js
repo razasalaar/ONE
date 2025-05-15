@@ -27,7 +27,6 @@ export default function Navbar() {
     const result = await logoutUser();
     if (!result.success) {
       console.warn("Logout API failed:", result.message);
-      alert(result.message);
     }
     router.push("/");
   };
