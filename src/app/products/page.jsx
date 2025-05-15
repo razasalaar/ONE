@@ -39,7 +39,7 @@ export default function ProductsPage() {
       <div className="w-full">
         <Navbar />
       </div>
-      <div className="bg-[#f7f9fb] pt-20 pb-16 mb-8">
+      <div className="bg-[#f7f9fb] pt-28 pb-16 mb-8">
         <div className="container mx-auto px-4">
           {/* Animated Header with Brand Logo */}
           <div
@@ -49,7 +49,7 @@ export default function ProductsPage() {
                 : "translate-y-10 opacity-0"
             }`}
           >
-            <h1 className="text-6xl font-black tracking-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight mb-6">
               <span className="text-sky-950 inline-block relative">
                 ONE
                 <div
@@ -63,7 +63,7 @@ export default function ProductsPage() {
             </h1>
 
             <p
-              className="text-gray-600 text-xl max-w-2xl mx-auto transition-all duration-1000 delay-500"
+              className="text-gray-600 text-base sm:text-lg md:text-xl max-w-2xl mx-auto transition-all duration-1000 delay-500"
               style={{
                 opacity: headerLoaded ? 1 : 0,
                 transform: headerLoaded ? "translateY(0)" : "translateY(20px)",
@@ -76,7 +76,7 @@ export default function ProductsPage() {
           {/* Featured Products Section */}
           <div className="mb-20 mt-24">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-sky-950 mb-5">
+              <h2 className="text-2xl sm:text-3xl font-bold text-sky-950 mb-5">
                 Featured Collection
               </h2>
               <div className="w-20 h-1 bg-sky-950 mx-auto mb-6"></div>
@@ -234,7 +234,7 @@ export default function ProductsPage() {
           </div>
 
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-sky-950 mb-5">
+            <h2 className="text-2xl sm:text-3xl font-bold text-sky-950 mb-5">
               Discover Our Collection
             </h2>
             <div className="w-20 h-1 bg-sky-950 mx-auto mb-8"></div>
@@ -265,10 +265,10 @@ export default function ProductsPage() {
       </div>
       <section className="py-16 bg-sky-950 mt-10 text-white">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="font-black text-3xl md:text-4xl mb-6">
+          <h2 className="font-black text-2xl sm:text-3xl md:text-4xl mb-6">
             Ready to Experience ONE?
           </h2>
-          <p className="text-lg max-w-2xl mx-auto mb-8">
+          <p className="text-base sm:text-lg max-w-2xl mx-auto mb-8">
             Join thousands of satisfied customers who trust us for their fashion
             needs.
           </p>

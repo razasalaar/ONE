@@ -15,12 +15,28 @@ export default function Navbar() {
   );
   const [menuOpen, setMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
   const router = useRouter();
   const pathname = usePathname();
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
     setIsLoggedIn(!!token);
+
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const handleLogout = async () => {
@@ -32,8 +48,14 @@ export default function Navbar() {
   };
 
   return (
-    <header className="shadow-lg rounded-lg w-full bg-white">
-      <nav className="flex h-auto items-center justify-between px-4 py-3 md:h-16 md:py-0">
+    <header
+      className={`w-full fixed top-0 left-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-white/80 backdrop-blur-sm shadow-md"
+          : "bg-white shadow-sm"
+      }`}
+    >
+      <nav className="flex h-auto items-center justify-between px-4 py-4 md:py-3 md:h-16 md:px-6">
         {/* Logo */}
         <div
           className={`flex items-center font-semibold ${
@@ -41,7 +63,7 @@ export default function Navbar() {
           } w-1/2 md:w-1/5`}
         >
           <Link
-            className="text-red-600 font-bold text-2xl md:text-4xl"
+            className="text-sky-950 font-bold text-2xl md:text-4xl"
             href="/dashboard"
           >
             ONE

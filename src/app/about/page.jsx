@@ -6,7 +6,7 @@ export default function About() {
   const router = useRouter();
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden pt-16">
       <Navbar />
 
       {/* Hero Section */}
@@ -22,7 +22,7 @@ export default function About() {
             <span className="uppercase text-white text-sm font-bold mb-4 block tracking-widest">
               OUR STORY
             </span>
-            <h1 className="text-white font-extrabold text-3xl sm:text-5xl lg:text-5xl mb-6 leading-tight">
+            <h1 className="text-white font-extrabold text-3xl sm:text-4xl lg:text-5xl mb-6 leading-tight">
               About <span className="text-red-600">ONE</span> – Redefining
               Fashion
             </h1>
@@ -52,7 +52,7 @@ export default function About() {
               <span className="text-red-600 font-bold uppercase tracking-widest text-sm mb-4 block">
                 Our Mission
               </span>
-              <h2 className="text-sky-950 font-black text-3xl md:text-4xl leading-tight mb-6">
+              <h2 className="text-sky-950 font-black text-2xl sm:text-3xl md:text-4xl leading-tight mb-6">
                 To Inspire Confidence Through Fashion
               </h2>
               <p className="text-gray-600 text-lg mb-6">
@@ -82,7 +82,7 @@ export default function About() {
           <span className="text-red-600 font-bold uppercase tracking-widest text-sm mb-4 block">
             Our Values
           </span>
-          <h2 className="text-sky-950 font-black text-3xl md:text-4xl mb-12">
+          <h2 className="text-sky-950 font-black text-2xl sm:text-3xl md:text-4xl mb-12">
             What We Stand For
           </h2>
 
@@ -171,7 +171,7 @@ export default function About() {
             <span className="text-red-600 font-bold uppercase tracking-widest text-sm mb-4 block">
               Meet The Team
             </span>
-            <h2 className="text-sky-950 font-black text-3xl md:text-4xl mb-6">
+            <h2 className="text-sky-950 font-black text-2xl sm:text-3xl md:text-4xl mb-6">
               The People Behind ONE
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
@@ -231,7 +231,7 @@ export default function About() {
       {/* CTA Section */}
       <section className="py-16 bg-sky-950 text-white">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="font-black text-3xl md:text-4xl mb-6">
+          <h2 className="font-black text-2xl sm:text-3xl md:text-4xl mb-6">
             Ready to Experience ONE?
           </h2>
           <p className="text-lg max-w-2xl mx-auto mb-8">

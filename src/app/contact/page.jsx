@@ -28,8 +28,10 @@ export default function ContactPage() {
 
   return (
     <ProtectedRoute>
-      <Navbar />
-      <div className="relative overflow-hidden">
+      <div className="w-full">
+        <Navbar />
+      </div>
+      <div className="relative overflow-hidden pt-16">
         {/* Hero Section */}
         <section className="w-full h-screen overflow-hidden relative before:block before:absolute before:bg-black before:h-full before:w-full before:top-0 before:left-0 before:z-10 before:opacity-50">
           <img
@@ -43,7 +45,7 @@ export default function ContactPage() {
               <span className="uppercase text-white text-sm font-bold mb-4 block tracking-widest">
                 CONNECT WITH US
               </span>
-              <h1 className="text-white font-extrabold text-3xl sm:text-5xl lg:text-5xl mb-6 leading-tight">
+              <h1 className="text-white font-extrabold text-3xl sm:text-4xl lg:text-5xl mb-6 leading-tight">
                 We're here to <span className="text-[#f7d0b6]">help!</span>
               </h1>
               <p className="text-stone-100 text-lg mb-8 max-w-lg mx-auto md:mx-0">
@@ -58,10 +60,10 @@ export default function ContactPage() {
         <section className="bg-[#f7f9fb] py-16 px-6">
           <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="max-w-xl text-center md:text-left">
-              <h2 className="font-black text-sky-950 text-3xl md:text-4xl mb-4">
+              <h2 className="font-black text-sky-950 text-2xl sm:text-3xl md:text-4xl mb-4">
                 Get in Touch with Us
               </h2>
-              <p className="text-sky-950 text-lg mb-8">
+              <p className="text-sky-950 text-base sm:text-lg mb-8">
                 We value your feedback and are here to assist with any
                 inquiries.
               </p>
@@ -234,10 +236,10 @@ export default function ContactPage() {
         {/* Contact Information Section */}
         <section className="py-16 bg-sky-950 text-white">
           <div className="container mx-auto px-6 text-center">
-            <h2 className="font-black text-3xl md:text-4xl mb-6">
+            <h2 className="font-black text-2xl sm:text-3xl md:text-4xl mb-6">
               Visit Us or Reach Us
             </h2>
-            <p className="text-lg mb-8">
+            <p className="text-base sm:text-lg mb-8">
               Our office is located at the heart of the city. Feel free to stop
               by or give us a call.
             </p>
