@@ -176,6 +176,9 @@ export default function CartPage() {
             </div>
           )}
         </div>
+
+
+        
       </div>
       <section className="py-16 bg-sky-950 text-white">
         <div className="container mx-auto px-6 text-center">
