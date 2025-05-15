@@ -191,7 +191,7 @@ export default function CheckoutPage() {
     <ProtectedRoute>
       <Navbar />
 
-      <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-[#f7f9fb] py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Progress Indicator */}
           <div className="mb-8">
@@ -201,18 +201,18 @@ export default function CheckoutPage() {
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center ${
                       activeStep === "shipping"
-                        ? "bg-blue-600 text-white"
-                        : "bg-blue-100 text-blue-600"
+                        ? "bg-sky-950 text-white"
+                        : "bg-white text-sky-950 border border-sky-950"
                     }`}
                   >
                     1
                   </div>
-                  <span className="text-sm mt-1">Shipping</span>
+                  <span className="text-sm mt-1 text-sky-950">Shipping</span>
                 </div>
                 <div className="flex-1 h-1 mx-2 bg-gray-200">
                   <div
                     className={`h-full ${
-                      activeStep === "payment" ? "bg-blue-600" : "bg-gray-200"
+                      activeStep === "payment" ? "bg-sky-950" : "bg-gray-200"
                     }`}
                     style={{ width: "100%" }}
                   ></div>
@@ -221,20 +221,22 @@ export default function CheckoutPage() {
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center ${
                       activeStep === "payment"
-                        ? "bg-blue-600 text-white"
-                        : "bg-blue-100 text-blue-600"
+                        ? "bg-sky-950 text-white"
+                        : "bg-white text-sky-950 border border-sky-950"
                     }`}
                   >
                     2
                   </div>
-                  <span className="text-sm mt-1">Payment</span>
+                  <span className="text-sm mt-1 text-sky-950">Payment</span>
                 </div>
                 <div className="flex-1 h-1 mx-2 bg-gray-200"></div>
                 <div className="flex flex-col items-center">
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-blue-100 text-blue-600">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-white text-sky-950 border border-sky-950">
                     3
                   </div>
-                  <span className="text-sm mt-1">Confirmation</span>
+                  <span className="text-sm mt-1 text-sky-950">
+                    Confirmation
+                  </span>
                 </div>
               </div>
             </div>
@@ -247,7 +249,7 @@ export default function CheckoutPage() {
                 id="checkout-form"
                 className="mb-6 flex items-center justify-between"
               >
-                <h2 className="text-2xl font-semibold">
+                <h2 className="text-2xl font-semibold text-sky-950">
                   {activeStep === "shipping"
                     ? "Shipping Details"
                     : "Payment Method"}
@@ -255,7 +257,7 @@ export default function CheckoutPage() {
                 {activeStep === "payment" && (
                   <button
                     onClick={handleBackToShipping}
-                    className="text-blue-600 flex items-center hover:text-blue-800 focus:outline-none"
+                    className="text-sky-950 flex items-center hover:text-sky-800 focus:outline-none"
                     aria-label="Back to shipping details"
                   >
                     <FaArrowLeft className="mr-1" /> Back
@@ -271,138 +273,22 @@ export default function CheckoutPage() {
                 }
                 className="space-y-6"
               >
-                {/* Shipping Information */}
-                {/* {activeStep === "shipping" && (
-                  <div className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <Box
-                        component="form"
-                        sx={{ "& .MuiTextField-root": { m: 1, width: "100%" } }}
-                        noValidate
-                        autoComplete="off"
-                      >
-                        <div>
-                          <TextField
-                            id="fullName"
-                            label="Full Name"
-                            variant="standard"
-                            name="fullName"
-                            value={formData.fullName}
-                            onChange={handleInputChange}
-                            autoComplete="name"
-                            error={!!errors.fullName}
-                            helperText={errors.fullName}
-                            required
-                          />
-                        </div>
-
-                        <div>
-                          <TextField
-                            id="email"
-                            label="Email Address"
-                            variant="standard"
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleInputChange}
-                            autoComplete="email"
-                            error={!!errors.email}
-                            helperText={errors.email}
-                            required
-                          />
-                        </div>
-
-                        <div>
-                          <TextField
-                            id="phone"
-                            label="Phone Number"
-                            variant="standard"
-                            type="tel"
-                            name="phone"
-                            value={formData.phone}
-                            onChange={handleInputChange}
-                            autoComplete="tel"
-                          />
-                        </div>
-
-                        <div>
-                          <TextField
-                            id="address"
-                            label="Street Address"
-                            variant="standard"
-                            name="address"
-                            value={formData.address}
-                            onChange={handleInputChange}
-                            autoComplete="street-address"
-                            error={!!errors.address}
-                            helperText={errors.address}
-                            required
-                          />
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                          <div className="md:col-span-1">
-                            <TextField
-                              id="city"
-                              label="City"
-                              variant="standard"
-                              name="city"
-                              value={formData.city}
-                              onChange={handleInputChange}
-                              autoComplete="address-level2"
-                              error={!!errors.city}
-                              helperText={errors.city}
-                              required
-                            />
-                          </div>
-
-                          <div className="md:col-span-1">
-                            <TextField
-                              id="postalCode"
-                              label="Postal Code"
-                              variant="standard"
-                              name="postalCode"
-                              value={formData.postalCode}
-                              onChange={handleInputChange}
-                              autoComplete="postal-code"
-                              error={!!errors.postalCode}
-                              helperText={errors.postalCode}
-                              required
-                            />
-                          </div>
-
-                          <div className="md:col-span-1">
-                            <TextField
-                              id="country"
-                              select
-                              label="Country"
-                              variant="standard"
-                              name="country"
-                              value={formData.country}
-                              onChange={handleInputChange}
-                              autoComplete="country"
-                              error={!!errors.country}
-                              helperText={errors.country}
-                              required
-                            >
-                              <MenuItem value="">Select a country</MenuItem>
-                              {countries.map((country) => (
-                                <MenuItem key={country} value={country}>
-                                  {country}
-                                </MenuItem>
-                              ))}
-                            </TextField>
-                          </div>
-                        </div>
-                      </Box>
-                    </div>
-                  </div>
-                )} */}
                 {activeStep === "shipping" && (
                   <div className="space-y-6 p-2">
                     <Box
                       component="form"
-                      sx={{ "& .MuiTextField-root": { m: 3 } }}
+                      sx={{
+                        "& .MuiTextField-root": { m: 3 },
+                        "& .MuiInputLabel-root": { color: "#0c4a6e" }, // sky-950 equiv
+                        "& .MuiInput-underline:before": {
+                          borderBottomColor: "#0c4a6e",
+                        },
+                        "& .MuiInput-underline:hover:not(.Mui-disabled):before":
+                          { borderBottomColor: "#0c4a6e" },
+                        "& .MuiInput-underline:after": {
+                          borderBottomColor: "#0c4a6e",
+                        },
+                      }}
                       noValidate
                       autoComplete="off"
                     >
@@ -531,13 +417,13 @@ export default function CheckoutPage() {
                         onClick={() => setPaymentMethod("credit-card")}
                         className={`p-4 border rounded-lg flex flex-col items-center justify-center transition-colors ${
                           paymentMethod === "credit-card"
-                            ? "border-blue-500 bg-blue-50"
-                            : "border-gray-200 hover:bg-gray-50"
+                            ? "border-sky-950 bg-sky-50"
+                            : "border-gray-200 hover:bg-[#f7f9fb]"
                         }`}
                         aria-pressed={paymentMethod === "credit-card"}
                       >
-                        <FaCreditCard className="text-2xl mb-2" />
-                        <span>Credit Card</span>
+                        <FaCreditCard className="text-2xl mb-2 text-sky-950" />
+                        <span className="text-sky-950">Credit Card</span>
                       </button>
 
                       <button
@@ -545,13 +431,13 @@ export default function CheckoutPage() {
                         onClick={() => setPaymentMethod("paypal")}
                         className={`p-4 border rounded-lg flex flex-col items-center justify-center transition-colors ${
                           paymentMethod === "paypal"
-                            ? "border-blue-500 bg-blue-50"
-                            : "border-gray-200 hover:bg-gray-50"
+                            ? "border-sky-950 bg-sky-50"
+                            : "border-gray-200 hover:bg-[#f7f9fb]"
                         }`}
                         aria-pressed={paymentMethod === "paypal"}
                       >
-                        <FaPaypal className="text-2xl mb-2" />
-                        <span>PayPal</span>
+                        <FaPaypal className="text-2xl mb-2 text-sky-950" />
+                        <span className="text-sky-950">PayPal</span>
                       </button>
 
                       <button
@@ -559,25 +445,25 @@ export default function CheckoutPage() {
                         onClick={() => setPaymentMethod("digital-wallet")}
                         className={`p-4 border rounded-lg flex flex-col items-center justify-center transition-colors ${
                           paymentMethod === "digital-wallet"
-                            ? "border-blue-500 bg-blue-50"
-                            : "border-gray-200 hover:bg-gray-50"
+                            ? "border-sky-950 bg-sky-50"
+                            : "border-gray-200 hover:bg-[#f7f9fb]"
                         }`}
                         aria-pressed={paymentMethod === "digital-wallet"}
                       >
-                        <div className="flex gap-2">
+                        <div className="flex gap-2 text-sky-950">
                           <FaApplePay className="text-2xl" />
                           <FaGooglePay className="text-2xl" />
                         </div>
-                        <span>Digital Wallet</span>
+                        <span className="text-sky-950">Digital Wallet</span>
                       </button>
                     </div>
 
                     {paymentMethod === "credit-card" && (
-                      <div className="space-y-4 mt-4 p-4 border border-gray-200 rounded-lg bg-gray-50">
+                      <div className="space-y-4 mt-4 p-4 border border-gray-200 rounded-lg bg-[#f7f9fb]">
                         <div>
                           <label
                             htmlFor="cardNumber"
-                            className="block text-sm font-medium text-gray-700"
+                            className="block text-sm font-medium text-sky-950"
                           >
                             Card Number <span className="text-red-500">*</span>
                           </label>
@@ -590,7 +476,7 @@ export default function CheckoutPage() {
                               onChange={handleInputChange}
                               placeholder="XXXX XXXX XXXX XXXX"
                               autoComplete="cc-number"
-                              className={`block w-full p-2 rounded-md pr-10 focus:border-blue-500 focus:ring-blue-500 ${
+                              className={`block w-full p-2 rounded-md pr-10 focus:border-sky-950 focus:ring-sky-950 ${
                                 errors.cardNumber
                                   ? "border-red-500"
                                   : "border-gray-300"
@@ -606,7 +492,7 @@ export default function CheckoutPage() {
                               maxLength={19}
                             />
                             <div className="absolute inset-y-0 right-0 flex items-center pr-3">
-                              <FaCreditCard className="text-gray-400" />
+                              <FaCreditCard className="text-sky-950" />
                             </div>
                           </div>
                           {errors.cardNumber && (
@@ -623,7 +509,7 @@ export default function CheckoutPage() {
                           <div>
                             <label
                               htmlFor="expiry"
-                              className="block text-sm font-medium text-gray-700"
+                              className="block text-sm font-medium text-sky-950"
                             >
                               Expiration Date{" "}
                               <span className="text-red-500">*</span>
@@ -636,7 +522,7 @@ export default function CheckoutPage() {
                               onChange={handleInputChange}
                               placeholder="MM/YY"
                               autoComplete="cc-exp"
-                              className={`mt-1 block p-2 w-full rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 ${
+                              className={`mt-1 block p-2 w-full rounded-md shadow-sm focus:border-sky-950 focus:ring-sky-950 ${
                                 errors.expiry
                                   ? "border-red-500"
                                   : "border-gray-300"
@@ -659,7 +545,7 @@ export default function CheckoutPage() {
                           <div>
                             <label
                               htmlFor="cvv"
-                              className="block text-sm font-medium text-gray-700"
+                              className="block text-sm font-medium text-sky-950"
                             >
                               CVV <span className="text-red-500">*</span>
                             </label>
@@ -671,7 +557,7 @@ export default function CheckoutPage() {
                               onChange={handleInputChange}
                               placeholder="123"
                               autoComplete="cc-csc"
-                              className={`mt-1 block p-2 w-full rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 ${
+                              className={`mt-1 block p-2 w-full rounded-md shadow-sm focus:border-sky-950 focus:ring-sky-950 ${
                                 errors.cvv
                                   ? "border-red-500"
                                   : "border-gray-300"
@@ -680,7 +566,6 @@ export default function CheckoutPage() {
                               aria-describedby={
                                 errors.cvv ? "cvv-error" : undefined
                               }
-                              maxLength={4}
                             />
                             {errors.cvv && (
                               <p
@@ -694,23 +579,6 @@ export default function CheckoutPage() {
                         </div>
                       </div>
                     )}
-
-                    {paymentMethod === "paypal" && (
-                      <div className="p-4 border border-gray-200 rounded-lg bg-gray-50">
-                        <p className="text-center text-gray-600">
-                          You'll be redirected to PayPal to complete your
-                          purchase securely.
-                        </p>
-                      </div>
-                    )}
-
-                    {paymentMethod === "digital-wallet" && (
-                      <div className="p-4 border border-gray-200 rounded-lg bg-gray-50">
-                        <p className="text-center text-gray-600">
-                          Choose your preferred wallet on the next screen.
-                        </p>
-                      </div>
-                    )}
                   </div>
                 )}
 
@@ -721,7 +589,7 @@ export default function CheckoutPage() {
                     onClick={
                       activeStep === "shipping" ? clearCart : handleClearCart
                     }
-                    className="w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center transition-colors"
+                    className="w-full bg-sky-950 text-white py-3 px-4 rounded-full hover:bg-sky-900 focus:outline-none focus:ring-2 focus:ring-sky-950 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center transition-colors"
                     aria-busy={isLoading ? "true" : "false"}
                   >
                     {isLoading ? (
@@ -750,7 +618,9 @@ export default function CheckoutPage() {
 
             {/* Right Column - Order Summary */}
             <div className="md:col-span-1 bg-white p-6 rounded-lg shadow-md h-fit sticky top-8">
-              <h2 className="text-2xl font-semibold mb-6">Order Summary</h2>
+              <h2 className="text-2xl font-semibold mb-6 text-sky-950">
+                Order Summary
+              </h2>
               <div className="space-y-4 divide-y divide-gray-200">
                 {cartItems.map((item) => (
                   <div
@@ -758,7 +628,7 @@ export default function CheckoutPage() {
                     className="flex justify-between items-center py-4"
                   >
                     <div className="flex items-center space-x-4">
-                      <div className="relative h-16 w-16 rounded overflow-hidden bg-gray-100">
+                      <div className="relative h-16 w-16 rounded overflow-hidden bg-[#f7f9fb]">
                         <img
                           src={item.image}
                           alt={item.name}
@@ -770,11 +640,13 @@ export default function CheckoutPage() {
                         />
                       </div>
                       <div>
-                        <h3 className="font-medium">{item.name}</h3>
+                        <h3 className="font-medium text-sky-950">
+                          {item.name}
+                        </h3>
                         <p className="text-gray-500">Qty: {item.quantity}</p>
                       </div>
                     </div>
-                    <p className="font-medium">
+                    <p className="font-medium text-sky-950">
                       ${(item.price * item.quantity).toFixed(2)}
                     </p>
                   </div>
@@ -782,15 +654,15 @@ export default function CheckoutPage() {
 
                 <div className="space-y-2 pt-4">
                   <div className="flex justify-between">
-                    <span>Subtotal</span>
-                    <span>${subtotal.toFixed(2)}</span>
+                    <span className="text-gray-600">Subtotal</span>
+                    <span className="text-sky-950">${subtotal.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Tax (8%)</span>
-                    <span>${tax.toFixed(2)}</span>
+                    <span className="text-gray-600">Tax (8%)</span>
+                    <span className="text-sky-950">${tax.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Shipping</span>
+                    <span className="text-gray-600">Shipping</span>
                     <span>
                       {shipping === 0 ? (
                         <span className="text-green-600">Free</span>
@@ -800,13 +672,13 @@ export default function CheckoutPage() {
                     </span>
                   </div>
                   <div className="flex justify-between font-semibold text-lg pt-4 border-t">
-                    <span>Total</span>
-                    <span>${total.toFixed(2)}</span>
+                    <span className="text-sky-950">Total</span>
+                    <span className="text-sky-950">${total.toFixed(2)}</span>
                   </div>
                 </div>
 
                 {shipping === 0 && (
-                  <div className="mt-4 p-3 bg-green-50 text-green-700 text-sm rounded-md">
+                  <div className="mt-4 p-3 bg-[#f7f9fb] text-sky-950 text-sm rounded-md border border-[#f7d0b6]">
                     <p className="font-medium">Free shipping applied!</p>
                     <p>Orders over $100 qualify for free shipping.</p>
                   </div>
@@ -817,7 +689,7 @@ export default function CheckoutPage() {
                 <div className="mt-6 pt-4 border-t">
                   <Link
                     href="/carts"
-                    className="text-blue-600 flex items-center hover:text-blue-800 text-sm"
+                    className="text-sky-950 flex items-center hover:text-sky-800 text-sm"
                   >
                     <FaArrowLeft className="mr-1" /> Back to cart
                   </Link>
@@ -835,9 +707,9 @@ export default function CheckoutPage() {
             aria-modal="true"
           >
             <div className="bg-white rounded-lg p-8 max-w-md w-full">
-              <div className="flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mx-auto mb-4">
+              <div className="flex items-center justify-center h-16 w-16 rounded-full bg-[#f7d0b6] mx-auto mb-4">
                 <svg
-                  className="h-8 w-8 text-green-600"
+                  className="h-8 w-8 text-sky-950"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -851,7 +723,7 @@ export default function CheckoutPage() {
                   />
                 </svg>
               </div>
-              <h3 className="text-2xl font-semibold text-center mb-4">
+              <h3 className="text-2xl font-semibold text-center mb-4 text-sky-950">
                 Order Confirmed!
               </h3>
               <p className="text-center text-gray-600 mb-6">
@@ -859,8 +731,8 @@ export default function CheckoutPage() {
                 confirmation email to <strong>{formData.email}</strong> with
                 your order details.
               </p>
-              <div className="bg-gray-50 p-4 rounded mb-6">
-                <p className="font-medium">
+              <div className="bg-[#f7f9fb] p-4 rounded mb-6">
+                <p className="font-medium text-sky-950">
                   Order Number: #ORD-
                   {Math.random().toString(36).substring(2, 10).toUpperCase()}
                 </p>
@@ -873,7 +745,7 @@ export default function CheckoutPage() {
                   setShowConfirmation(false);
                   router.push("/");
                 }}
-                className="w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+                className="w-full bg-sky-950 text-white py-3 px-4 rounded-full hover:bg-sky-900 focus:outline-none focus:ring-2 focus:ring-sky-950 focus:ring-offset-2 transition-colors"
               >
                 Continue Shopping
               </button>
@@ -890,21 +762,17 @@ export default function CheckoutPage() {
             Join thousands of satisfied customers who trust us for their fashion
             needs.
           </p>
-          <div className="flex flex-col cursor-pointer sm:flex-row gap-4 justify-center">
-            <Link href="../products">
-              <button
-                onClick={() => router.push("/products")}
-                className="bg-[#f7d0b6] text-sky-950 hover:bg-opacity-90 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full"
-              >
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/products">
+              <button className="bg-[#f7d0b6] text-sky-950 hover:bg-opacity-90 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full">
                 Shop Now
               </button>
             </Link>
-            <button
-              onClick={() => router.push("/contact")}
-              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-sky-950 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full"
-            >
-              Contact Us
-            </button>
+            <Link href="/contact">
+              <button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-sky-950 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full">
+                Contact Us
+              </button>
+            </Link>
           </div>
         </div>
       </section>

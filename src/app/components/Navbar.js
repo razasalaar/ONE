@@ -42,7 +42,7 @@ export default function Navbar() {
           } w-1/2 md:w-1/5`}
         >
           <Link
-            className="text-red-700 font-bold text-2xl md:text-4xl"
+            className="text-red-600 font-bold text-2xl md:text-4xl"
             href="/dashboard"
           >
             ONE
@@ -94,13 +94,13 @@ export default function Navbar() {
           {isLoggedIn ? (
             <div className="flex items-center space-x-6">
               <Link href="/carts" aria-label={`Cart with ${cartCount} items`}>
-                <StyledBadge badgeContent={cartCount} color="secondary">
-                  <ShoppingCartIcon />
+                <StyledBadge badgeContent={cartCount} color="primary">
+                  <ShoppingCartIcon className="text-sky-950" />
                 </StyledBadge>
               </Link>
               <button
                 onClick={handleLogout}
-                className="text-red-600 hover:bg-red-50 rounded-lg p-2 transition-colors"
+                className="text-sky-950 hover:bg-sky-50 rounded-lg p-2 transition-colors"
                 aria-label="Log out"
               >
                 <LogoutIcon />
@@ -108,12 +108,12 @@ export default function Navbar() {
             </div>
           ) : (
             <>
-              <Link href="/login" className="text-blue-600 hover:underline">
+              <Link href="/login" className="text-sky-950 hover:underline">
                 Login
               </Link>
               <Link
                 href="/register"
-                className="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700"
+                className="bg-sky-950 text-white px-4 py-1 rounded hover:bg-sky-900"
               >
                 Sign Up
               </Link>
@@ -129,13 +129,13 @@ export default function Navbar() {
               onClick={() => setMenuOpen(false)}
               aria-label={`Cart with ${cartCount} items`}
             >
-              <StyledBadge badgeContent={cartCount} color="secondary">
-                <ShoppingCartIcon className="text-gray-500" />
+              <StyledBadge badgeContent={cartCount} color="primary">
+                <ShoppingCartIcon className="text-sky-950" />
               </StyledBadge>
             </Link>
           )}
           <button
-            className="text-gray-500 w-10 h-10 relative focus:outline-none"
+            className="text-sky-950 w-10 h-10 relative focus:outline-none"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
           >
@@ -209,7 +209,7 @@ export default function Navbar() {
                 handleLogout();
                 setMenuOpen(false);
               }}
-              className="w-full px-4 py-3 rounded-lg bg-red-50 text-red-600 hover:bg-red-100 transition-colors font-medium text-left"
+              className="w-full px-4 py-3 rounded-lg bg-sky-50 text-sky-950 hover:bg-sky-100 transition-colors font-medium text-left"
             >
               Logout
             </button>
@@ -217,14 +217,14 @@ export default function Navbar() {
             <div className="flex flex-col space-y-2">
               <Link
                 href="/login"
-                className="px-4 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 text-center"
+                className="px-4 py-3 bg-sky-900 text-white rounded-lg hover:bg-sky-950 text-center"
                 onClick={() => setMenuOpen(false)}
               >
                 Login
               </Link>
               <Link
                 href="/register"
-                className="px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-center"
+                className="px-4 py-3 bg-sky-950 text-white rounded-lg hover:bg-sky-900 text-center"
                 onClick={() => setMenuOpen(false)}
               >
                 Sign Up

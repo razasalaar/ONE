@@ -40,34 +40,31 @@ export default function SignupForm() {
       return;
     }
 
-
-
-    
     mutate({ username, email, password });
   };
   return (
-    <section className="min-h-screen w-full bg-gray-50  flex items-center justify-center px-4 py-10">
-      <div className="max-w-6xl w-full bg-gray-50   rounded-lg overflow-hidden flex flex-col lg:flex-row">
+    <section className="min-h-screen w-full bg-[#f7f9fb] flex items-center justify-center px-4 py-10">
+      <div className="max-w-6xl w-full bg-[#f7f9fb] rounded-lg overflow-hidden flex flex-col lg:flex-row">
         <div className="w-full lg:w-1/2 flex justify-center items-center p-6">
           <Image
             src="/image/login.png"
             alt="Login illustration"
             width={700}
             height={500}
-            className="w-full h-auto max-w-[200px]  md:max-w-[400px]"
+            className="w-full h-auto max-w-[200px] md:max-w-[400px]"
             priority
           />
         </div>
 
-        <div className="w-full lg:w-1/2 p-8 bg-gray-100">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+        <div className="w-full lg:w-1/2 p-8 bg-white shadow-md rounded-lg">
+          <h2 className="text-2xl font-bold text-sky-950 mb-6 text-center">
             Create Your Account
           </h2>
 
           <div className="flex justify-center mb-6 gap-2">
             <button
               type="button"
-              className="social-button hover:bg-blue-700"
+              className="social-button hover:bg-sky-900"
               aria-label="Sign up with Facebook"
             >
               <svg
@@ -82,7 +79,7 @@ export default function SignupForm() {
 
             <button
               type="button"
-              className="social-button hover:bg-blue-400"
+              className="social-button hover:bg-sky-900"
               aria-label="Sign up with Twitter"
             >
               <svg
@@ -97,7 +94,7 @@ export default function SignupForm() {
 
             <button
               type="button"
-              className="social-button hover:bg-blue-600"
+              className="social-button hover:bg-sky-900"
               aria-label="Sign up with LinkedIn"
             >
               <svg
@@ -117,7 +114,7 @@ export default function SignupForm() {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4 ">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block mb-1 text-sm font-medium text-gray-700">
                 Username
@@ -127,7 +124,7 @@ export default function SignupForm() {
                 name="username"
                 required
                 placeholder="Enter your name"
-                className="w-full border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-300"
+                className="w-full border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-950"
               />
             </div>
 
@@ -140,7 +137,7 @@ export default function SignupForm() {
                 name="email"
                 required
                 placeholder="Enter your email"
-                className="w-full border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-300"
+                className="w-full border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-950"
               />
             </div>
 
@@ -154,7 +151,7 @@ export default function SignupForm() {
                   name="password"
                   required
                   placeholder="Create a password"
-                  className="w-full border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-300"
+                  className="w-full border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-950"
                 />
                 <button
                   type="button"
@@ -176,7 +173,7 @@ export default function SignupForm() {
                   name="confirmPassword"
                   required
                   placeholder="Confirm your password"
-                  className="w-full border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-300"
+                  className="w-full border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-950"
                 />
                 <button
                   type="button"
@@ -194,12 +191,12 @@ export default function SignupForm() {
                 checked={agreeToTerms}
                 onChange={(e) => setAgreeToTerms(e.target.checked)}
                 id="terms"
-                className="mr-2 h-4 w-4 border-gray-300 text-blue-600 focus:ring-gray-300"
+                className="mr-2 h-4 w-4 border-gray-300 text-sky-950 focus:ring-sky-950"
                 required
               />
               <label htmlFor="terms" className="text-sm text-gray-600">
                 I agree to the{" "}
-                <a href="#" className="text-blue-600 hover:text-blue-700">
+                <a href="#" className="text-sky-950 hover:text-sky-800">
                   Terms and Conditions
                 </a>
               </label>
@@ -208,7 +205,7 @@ export default function SignupForm() {
             <button
               type="submit"
               disabled={!agreeToTerms || isLoading}
-              className="w-full cursor-pointer rounded bg-blue-600 px-7 py-3 text-sm font-medium uppercase text-white shadow hover:bg-blue-700"
+              className="w-full cursor-pointer rounded-full bg-sky-950 px-7 py-3 text-sm font-medium uppercase text-white shadow hover:bg-sky-900 transition-colors"
             >
               {isLoading ? "Registering..." : "Register"}
             </button>
@@ -224,7 +221,7 @@ export default function SignupForm() {
               Already have an account?{" "}
               <Link
                 href="/login"
-                className="text-blue-600 hover:text-blue-700 font-medium"
+                className="text-sky-950 hover:text-sky-800 font-medium"
               >
                 Login
               </Link>
@@ -238,7 +235,7 @@ export default function SignupForm() {
           height: 36px;
           width: 36px;
           border-radius: 9999px;
-          background-color: #3b71ca;
+          background-color: #0c4a6e;
           color: white;
           display: flex;
           align-items: center;

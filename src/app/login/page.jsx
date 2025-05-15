@@ -37,8 +37,8 @@ export default function LoginForm() {
   };
 
   return (
-    <section className="min-h-screen w-full flex bg-gray-50 items-center justify-center px-4 py-10">
-      <div className="max-w-4xl w-full bg-gray-50 rounded-lg overflow-hidden flex flex-col lg:flex-row">
+    <section className="min-h-screen w-full flex bg-[#f7f9fb] items-center justify-center px-4 py-10">
+      <div className="max-w-4xl w-full bg-[#f7f9fb] rounded-lg overflow-hidden flex flex-col lg:flex-row">
         <div className="w-full lg:w-1/2 flex justify-center items-center p-6">
           <Image
             src="/image/login.png"
@@ -50,8 +50,8 @@ export default function LoginForm() {
           />
         </div>
 
-        <div className="w-full lg:w-1/2 p-8 bg-gray-100">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+        <div className="w-full lg:w-1/2 p-8 bg-white shadow-md rounded-lg">
+          <h2 className="text-2xl font-bold text-sky-950 mb-6 text-center">
             Login
           </h2>
 
@@ -65,7 +65,7 @@ export default function LoginForm() {
                 name="username"
                 required
                 placeholder="Enter your username"
-                className="w-full border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-300"
+                className="w-full border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-950"
               />
             </div>
 
@@ -79,7 +79,7 @@ export default function LoginForm() {
                   name="password"
                   required
                   placeholder="Enter your password"
-                  className="w-full border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-300"
+                  className="w-full border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-950"
                 />
                 <button
                   type="button"
@@ -93,7 +93,7 @@ export default function LoginForm() {
 
             <button
               type="submit"
-              className="w-full cursor-pointer rounded bg-blue-600 px-7 py-3 text-sm font-medium uppercase text-white shadow hover:bg-blue-700"
+              className="w-full cursor-pointer rounded-full bg-sky-950 px-7 py-3 text-sm font-medium uppercase text-white shadow hover:bg-sky-900 transition-colors"
             >
               {isLoading ? "Logging in..." : "Login"}
             </button>
@@ -104,8 +104,8 @@ export default function LoginForm() {
             <div className="mt-6 text-center text-sm text-gray-600">
               Don't have an account?{" "}
               <Link
-                href="/"
-                className="text-blue-600 hover:text-blue-700 font-medium"
+                href="/register"
+                className="text-sky-950 hover:text-sky-800 font-medium"
               >
                 Sign Up
               </Link>

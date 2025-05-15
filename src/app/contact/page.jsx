@@ -44,7 +44,7 @@ export default function ContactPage() {
                 CONNECT WITH US
               </span>
               <h1 className="text-white font-extrabold text-3xl sm:text-5xl lg:text-5xl mb-6 leading-tight">
-                We're here to <span className="text-[#dc2626]">help!</span>
+                We're here to <span className="text-[#f7d0b6]">help!</span>
               </h1>
               <p className="text-stone-100 text-lg mb-8 max-w-lg mx-auto md:mx-0">
                 Reach out for any questions or support, and we'll get back to
@@ -55,7 +55,7 @@ export default function ContactPage() {
         </section>
 
         {/* Contact Form Section */}
-        <section className="bg-white py-16 px-6">
+        <section className="bg-[#f7f9fb] py-16 px-6">
           <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="max-w-xl text-center md:text-left">
               <h2 className="font-black text-sky-950 text-3xl md:text-4xl mb-4">
@@ -110,7 +110,7 @@ export default function ContactPage() {
 
             <form
               onSubmit={handleSubmit}
-              className="w-full md:w-1/2 bg-[#0a3a5a] p-8 rounded-xl shadow-xl"
+              className="w-full md:w-1/2 bg-sky-950 p-8 rounded-xl shadow-xl"
             >
               <Box sx={{ "& .MuiTextField-root": { mb: 3, width: "100%" } }}>
                 <TextField
@@ -211,15 +211,16 @@ export default function ContactPage() {
                   variant="contained"
                   fullWidth
                   sx={{
-                    backgroundColor: "#0c4a6e",
-                    color: "white",
+                    backgroundColor: "#f7d0b6",
+                    color: "#0c4a6e",
                     textTransform: "uppercase",
                     fontWeight: "semibold",
                     py: 1.5,
                     px: 4,
                     borderRadius: "9999px",
                     "&:hover": {
-                      backgroundColor: "#0a3a5a",
+                      backgroundColor: "#f7d0b6",
+                      opacity: 0.9,
                     },
                   }}
                 >

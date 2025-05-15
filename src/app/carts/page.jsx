@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -47,9 +46,9 @@ export default function CartPage() {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-gray-50 pt-20 pb-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto bg-white rounded-xl shadow-lg p-6 sm:p-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">
+      <div className="min-h-screen bg-[#f7f9fb] pt-20 pb-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto bg-white rounded-xl shadow-md p-6 sm:p-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-sky-950 mb-6">
             Your Cart ({cartItems.length})
           </h2>
 
@@ -60,7 +59,7 @@ export default function CartPage() {
               </p>
               <Link
                 href="/products"
-                className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="inline-block px-6 py-3 bg-sky-950 text-white rounded-full hover:bg-sky-900 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-950"
                 aria-label="Continue shopping"
               >
                 Continue Shopping
@@ -72,7 +71,7 @@ export default function CartPage() {
               {cartItems.map((item) => (
                 <div
                   key={item.id}
-                  className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                  className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 bg-[#f7f9fb] rounded-lg hover:bg-gray-100 transition-colors"
                 >
                   <div className="relative w-20 h-20 flex-shrink-0">
                     <Image
@@ -84,7 +83,7 @@ export default function CartPage() {
                     />
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900 line-clamp-1 text-base sm:text-lg ">
+                    <h3 className="font-semibold text-sky-950 line-clamp-1 text-base sm:text-lg ">
                       {item.title}
                     </h3>
                     <p className="text-sm text-gray-500">
@@ -92,10 +91,10 @@ export default function CartPage() {
                     </p>
                   </div>
                   <div className="flex items-center gap-3 sm:gap-4">
-                    <div className="flex items-center border rounded-md">
+                    <div className="flex items-center border border-gray-300 rounded-md overflow-hidden">
                       <button
                         onClick={() => handleDecrement(item)}
-                        className="px-3 py-2 text-gray-600 hover:bg-gray-200 focus:outline-none disabled:opacity-50"
+                        className="px-3 py-2 text-sky-950 hover:bg-gray-200 focus:outline-none disabled:opacity-50"
                         disabled={item.quantity <= 1}
                         aria-label={`Decrease quantity of ${item.title}`}
                       >
@@ -106,13 +105,13 @@ export default function CartPage() {
                       </span>
                       <button
                         onClick={() => handleIncrement(item)}
-                        className="px-3 py-2 text-gray-600 hover:bg-gray-200 focus:outline-none"
+                        className="px-3 py-2 text-sky-950 hover:bg-gray-200 focus:outline-none"
                         aria-label={`Increase quantity of ${item.title}`}
                       >
                         +
                       </button>
                     </div>
-                    <p className="font-semibold text-gray-900 w-20 text-right hidden sm:block">
+                    <p className="font-semibold text-sky-950 w-20 text-right hidden sm:block">
                       ${(item.price * item.quantity).toFixed(2)}
                     </p>
                     <button
@@ -123,15 +122,15 @@ export default function CartPage() {
                       <FaTrash className="w-5 h-5" />
                     </button>
                   </div>
-                  <p className="font-semibold text-gray-900 w-full text-right sm:hidden">
+                  <p className="font-semibold text-sky-950 w-full text-right sm:hidden">
                     ${(item.price * item.quantity).toFixed(2)}
                   </p>
                 </div>
               ))}
 
               {/* Summary */}
-              <div className="mt-8 pt-6 border-t">
-                <div className="flex justify-between text-base sm:text-lg text-gray-900 mb-2">
+              <div className="mt-8 pt-6 border-t border-gray-200">
+                <div className="flex justify-between text-base sm:text-lg text-sky-950 mb-2">
                   <p>Subtotal</p>
                   <p className="font-semibold">${total.toFixed(2)}</p>
                 </div>
@@ -139,25 +138,25 @@ export default function CartPage() {
                   <p>Shipping</p>
                   <p>Free</p>
                 </div>
-                <div className="flex justify-between text-lg sm:text-xl font-bold text-gray-900 mb-8">
+                <div className="flex justify-between text-lg sm:text-xl font-bold text-sky-950 mb-8">
                   <p>Total</p>
                   <p>${total.toFixed(2)}</p>
                 </div>
 
-                <div className="flex justify-between  flex-col sm:flex-row gap-4">
+                <div className="flex justify-between flex-col sm:flex-row gap-4">
                   <div>
                     <button
                       onClick={handleClearCart}
-                      className="px-6 py-3 text-red-600 cursor-pointer border border-red-600 rounded-lg hover:bg-red-50 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500"
+                      className="px-6 py-3 text-sky-950 cursor-pointer border border-sky-950 rounded-full hover:bg-sky-50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-950 text-sm font-semibold uppercase"
                       aria-label="Clear cart"
                     >
                       Clear Cart
                     </button>
                   </div>
-                  <div className="flex  sm:flex-row gap-4 ">
+                  <div className="flex sm:flex-row gap-4">
                     <Link
                       href="/products"
-                      className="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-center"
+                      className="px-6 py-3 border border-gray-300 rounded-full hover:bg-gray-50 transition-all duration-300 text-center text-sky-950 text-sm font-semibold uppercase"
                       aria-label="Continue shopping"
                     >
                       Continue Shopping
@@ -165,7 +164,7 @@ export default function CartPage() {
 
                     <Link
                       href="/checkout"
-                      className="px-6  bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg transition-colors text-center"
+                      className="px-6 bg-sky-950 hover:bg-sky-900 text-white font-medium py-3 rounded-full transition-all duration-300 text-center text-sm font-semibold uppercase"
                       aria-label="Proceed to checkout"
                     >
                       Checkout
@@ -176,9 +175,6 @@ export default function CartPage() {
             </div>
           )}
         </div>
-
-
-        
       </div>
       <section className="py-16 bg-sky-950 text-white">
         <div className="container mx-auto px-6 text-center">
@@ -189,21 +185,17 @@ export default function CartPage() {
             Join thousands of satisfied customers who trust us for their fashion
             needs.
           </p>
-          <div className="flex flex-col cursor-pointer sm:flex-row gap-4 justify-center">
-            <Link href="../products">
-              <button
-                onClick={() => router.push("/products")}
-                className="bg-[#f7d0b6] text-sky-950 hover:bg-opacity-90 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full"
-              >
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/products">
+              <button className="bg-[#f7d0b6] text-sky-950 hover:bg-opacity-90 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full">
                 Shop Now
               </button>
             </Link>
-            <button
-              onClick={() => router.push("/contact")}
-              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-sky-950 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full"
-            >
-              Contact Us
-            </button>
+            <Link href="/contact">
+              <button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-sky-950 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full">
+                Contact Us
+              </button>
+            </Link>
           </div>
         </div>
       </section>

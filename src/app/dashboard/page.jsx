@@ -26,7 +26,7 @@ export default function Dashboard() {
                 PREMIUM FASHION
               </span>
               <h1 className="text-white font-extrabold text-3xl sm:text-5xl lg:text-5xl mb-6 leading-tight">
-                Welcome to <span className="text-red-700">ONE</span> – Your
+                Welcome to <span className="text-red-600">ONE</span> – Your
                 Trendy Clothing Store
               </h1>
               <p className="text-stone-100 text-lg mb-8 max-w-lg mx-auto md:mx-0">
@@ -34,7 +34,7 @@ export default function Dashboard() {
                 handpicked to elevate your style every day.
               </p>
               <Link href="/products">
-                <button className="bg-white cursor-pointer hover:bg-red-500   text-sky-950 hover:bg-opacity-90 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full shadow-lg">
+                <button className="bg-white cursor-pointer hover:text-white hover:bg-red-600 text-sky-950 hover:bg-opacity-90 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full shadow-lg">
                   Shop Now
                 </button>
               </Link>
@@ -56,7 +56,7 @@ export default function Dashboard() {
               </p>
             </div>
             <Link href="/products">
-              <button className="bg-sky-900 hover:bg-sky-950 cursor-pointer text-white hover:bg-opacity-90 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full border-2 border-sky-900 min-w-[200px]">
+              <button className="bg-sky-950 hover:bg-sky-900 cursor-pointer text-white hover:bg-opacity-90 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full border-2 border-sky-950 min-w-[200px]">
                 Explore Collection
               </button>
             </Link>
@@ -64,11 +64,11 @@ export default function Dashboard() {
         </section>
 
         {/* Featured Products - 1 */}
-        <section className="py-12 md:py-20 bg-white">
+        <section className="py-12 md:py-20 bg-[#f7f9fb]">
           <div className="container mx-auto px-6">
             <div className="flex flex-col lg:flex-row gap-8 items-stretch">
               <div className="lg:w-1/2 flex flex-col items-center lg:items-end text-center lg:text-right p-8 order-2 lg:order-1">
-                <h2 className="text-[#64618C] font-bold text-2xl lg:text-3xl mb-6">
+                <h2 className="text-sky-950 font-bold text-2xl lg:text-3xl mb-6">
                   Best-Selling Outfit of the Month
                 </h2>
                 <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-xl shadow-xl">
@@ -87,7 +87,7 @@ export default function Dashboard() {
 
               <div className="lg:w-1/2 bg-sky-950 text-white p-12 rounded-xl relative overflow-hidden order-1 lg:order-2">
                 <div className="relative z-20">
-                  <h2 className="text-pink-300 font-black text-4xl md:text-5xl leading-tight mb-6">
+                  <h2 className="text-[#f7d0b6] font-black text-4xl md:text-5xl leading-tight mb-6">
                     Elevate Your Style with ONE
                   </h2>
                   <p className="text-white text-lg mb-8">
@@ -96,7 +96,7 @@ export default function Dashboard() {
                     piece we offer.
                   </p>
                   <Link href="/products">
-                    <button className="bg-pink-300 hover:bg-pink-400 cursor-pointer text-sky-950 hover:bg-opacity-90 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full">
+                    <button className="bg-[#f7d0b6] hover:bg-opacity-90 cursor-pointer text-sky-950 hover:bg-opacity-90 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full">
                       See Product
                     </button>
                   </Link>
@@ -122,7 +122,7 @@ export default function Dashboard() {
                     season.
                   </p>
                   <Link href="/products">
-                    <button className="bg-sky-900 hover:bg-sky-950 cursor-pointer text-white hover:bg-opacity-90 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full border-2 border-sky-900">
+                    <button className="bg-sky-950 hover:bg-sky-900 cursor-pointer text-white hover:bg-opacity-90 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full border-2 border-sky-950">
                       View Details
                     </button>
                   </Link>
@@ -131,7 +131,7 @@ export default function Dashboard() {
               </div>
 
               <div className="lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left p-8">
-                <h2 className="text-[#64618C] font-bold text-2xl lg:text-3xl mb-6">
+                <h2 className="text-sky-950 font-bold text-2xl lg:text-3xl mb-6">
                   Handpicked Styles
                 </h2>
                 <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-xl shadow-xl">

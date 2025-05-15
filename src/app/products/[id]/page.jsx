@@ -1,72 +1,3 @@
-// "use client";
-// import { useParams } from "next/navigation";
-// import { useEffect, useState } from "react";
-// import { fetchProductById } from "@/lib/api";
-// import Navbar from "../../components/Navbar";
-// import ProtectedRoute from "@/app/components/ProtectedRoute";
-// export default function ProductDetailPage() {
-//   const params = useParams();
-//   const [product, setProduct] = useState(null);
-//   const [loading, setLoading] = useState(true);
-
-//   useEffect(() => {
-//     if (params?.id) {
-//       const loadProduct = async () => {
-//         try {
-//           const data = await fetchProductById(params.id);
-//           setProduct(data);
-//         } catch (error) {
-//           console.error("Error fetching product:", error);
-//         } finally {
-//           setLoading(false);
-//         }
-//       };
-//       loadProduct();
-//     }
-//   }, [params?.id]);
-
-//   if (loading)
-//     return (
-//       <div className="flex items-center justify-center h-screen">
-//         <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-blue-500" />
-//       </div>
-//     );
-//   if (!product)
-//     return <div className="text-center py-8">Product not found</div>;
-
-//   return (
-//     <ProtectedRoute>
-//       <div className="w-full">
-//         <Navbar />
-//       </div>
-
-//       <div className="max-w-4xl mt-20   mx-auto bg-white rounded-lg shadow p-6">
-//         <div className="flex flex-col md:flex-row gap-6">
-//           <div className="md:w-1/2">
-//             <img
-//               src={product.image}
-//               alt={product.title}
-//               className="w-full h-auto object-contain max-h-96"
-//             />
-//           </div>
-//           <div className="md:w-1/2">
-//             <h1 className="text-2xl font-bold mb-2">{product.title}</h1>
-//             <p className="text-xl font-semibold text-blue-600 mb-4">
-//               ${product.price}
-//             </p>
-//             <p className="text-gray-600 mb-4">{product.description}</p>
-//             <div className="bg-gray-100 p-3 rounded">
-//               <p className="text-sm text-gray-700">
-//                 Category: {product.category}
-//               </p>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </ProtectedRoute>
-//   );
-// }
-
 "use client";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -81,7 +12,7 @@ import { addToCart } from "../../../redux/Cartslice";
 const StarIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="h-5 w-5"
+    className="h-5 w-5 text-[#f7d0b6]"
     viewBox="0 0 20 20"
     fill="currentColor"
   >
@@ -171,17 +102,17 @@ export default function ProductDetailPage() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen bg-gray-50">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600" />
+      <div className="flex items-center justify-center h-screen bg-[#f7f9fb]">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-sky-950" />
       </div>
     );
   }
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
+      <div className="min-h-screen bg-[#f7f9fb] flex flex-col items-center justify-center p-4">
         <div className="max-w-md text-center bg-white p-8 rounded-xl shadow-sm">
-          <h1 className="text-2xl font-bold text-gray-800 mb-4">
+          <h1 className="text-2xl font-bold text-sky-950 mb-4">
             Product not found
           </h1>
           <p className="text-gray-600 mb-6">
@@ -190,7 +121,7 @@ export default function ProductDetailPage() {
           </p>
           <Link
             href="/"
-            className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            className="inline-flex items-center px-4 py-2 bg-sky-950 text-white rounded-lg hover:bg-sky-900 transition-colors"
           >
             <ArrowLeftIcon />
             <span className="ml-2">Back to Home</span>
@@ -202,14 +133,14 @@ export default function ProductDetailPage() {
 
   return (
     <ProtectedRoute>
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-[#f7f9fb]">
         <Navbar />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="mb-4">
             <Link
               href="/products"
-              className="inline-flex items-center text-blue-600 hover:text-blue-800"
+              className="inline-flex items-center text-sky-950 hover:text-sky-800"
             >
               <ArrowLeftIcon />
               <span className="ml-1">Back to products</span>
@@ -233,7 +164,7 @@ export default function ProductDetailPage() {
                       onClick={() => setActiveImage(index)}
                       className={`flex-shrink-0 w-16 h-16 rounded-md overflow-hidden border-2 ${
                         activeImage === index
-                          ? "border-blue-500"
+                          ? "border-sky-950"
                           : "border-transparent"
                       }`}
                     >
@@ -271,13 +202,13 @@ export default function ProductDetailPage() {
                       </span>
                     </div>
                   </div>
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#f7d0b6] text-sky-950">
                     {product.category}
                   </span>
                 </div>
 
                 <div className="mt-6">
-                  <p className="text-3xl font-semibold text-gray-900 mb-4">
+                  <p className="text-3xl font-semibold text-sky-950 mb-4">
                     ${product.price.toFixed(2)}
                     {product.price > 50 && (
                       <span className="ml-2 text-sm text-green-600">
@@ -326,12 +257,12 @@ export default function ProductDetailPage() {
                   <div className="flex space-x-4">
                     <button
                       onClick={handleAddToCart}
-                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-lg font-medium flex items-center justify-center transition-colors"
+                      className="flex-1 bg-sky-950 hover:bg-sky-900 text-white py-3 px-4 rounded-lg font-medium flex items-center justify-center transition-colors"
                     >
                       <ShoppingCartIcon />
                       <span className="ml-2">Add to Cart</span>
                     </button>
-                    <button className="flex-1 border border-blue-600 text-blue-600 hover:bg-blue-50 py-3 px-4 rounded-lg font-medium transition-colors">
+                    <button className="flex-1 border border-sky-950 text-sky-950 hover:bg-sky-50 py-3 px-4 rounded-lg font-medium transition-colors">
                       Buy Now
                     </button>
                   </div>
@@ -343,7 +274,7 @@ export default function ProductDetailPage() {
           {/* Additional Info Section */}
           <div className="mt-8 bg-white rounded-xl shadow-sm overflow-hidden">
             <div className="p-6">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">
+              <h2 className="text-xl font-bold text-sky-950 mb-4">
                 Product Details
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
