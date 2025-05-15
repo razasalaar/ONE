@@ -3,7 +3,9 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { clearCart } from "../../redux/Cartslice";
-
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import MenuItem from "@mui/material/MenuItem";
 import Navbar from "../components/Navbar";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -270,236 +272,256 @@ export default function CheckoutPage() {
                 className="space-y-6"
               >
                 {/* Shipping Information */}
-                {activeStep === "shipping" && (
+                {/* {activeStep === "shipping" && (
                   <div className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <label
-                          htmlFor="fullName"
-                          className="block text-sm font-medium text-gray-700"
-                        >
-                          Full Name <span className="text-red-500">*</span>
-                        </label>
-                        <input
+                      <Box
+                        component="form"
+                        sx={{ "& .MuiTextField-root": { m: 1, width: "100%" } }}
+                        noValidate
+                        autoComplete="off"
+                      >
+                        <div>
+                          <TextField
+                            id="fullName"
+                            label="Full Name"
+                            variant="standard"
+                            name="fullName"
+                            value={formData.fullName}
+                            onChange={handleInputChange}
+                            autoComplete="name"
+                            error={!!errors.fullName}
+                            helperText={errors.fullName}
+                            required
+                          />
+                        </div>
+
+                        <div>
+                          <TextField
+                            id="email"
+                            label="Email Address"
+                            variant="standard"
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleInputChange}
+                            autoComplete="email"
+                            error={!!errors.email}
+                            helperText={errors.email}
+                            required
+                          />
+                        </div>
+
+                        <div>
+                          <TextField
+                            id="phone"
+                            label="Phone Number"
+                            variant="standard"
+                            type="tel"
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleInputChange}
+                            autoComplete="tel"
+                          />
+                        </div>
+
+                        <div>
+                          <TextField
+                            id="address"
+                            label="Street Address"
+                            variant="standard"
+                            name="address"
+                            value={formData.address}
+                            onChange={handleInputChange}
+                            autoComplete="street-address"
+                            error={!!errors.address}
+                            helperText={errors.address}
+                            required
+                          />
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                          <div className="md:col-span-1">
+                            <TextField
+                              id="city"
+                              label="City"
+                              variant="standard"
+                              name="city"
+                              value={formData.city}
+                              onChange={handleInputChange}
+                              autoComplete="address-level2"
+                              error={!!errors.city}
+                              helperText={errors.city}
+                              required
+                            />
+                          </div>
+
+                          <div className="md:col-span-1">
+                            <TextField
+                              id="postalCode"
+                              label="Postal Code"
+                              variant="standard"
+                              name="postalCode"
+                              value={formData.postalCode}
+                              onChange={handleInputChange}
+                              autoComplete="postal-code"
+                              error={!!errors.postalCode}
+                              helperText={errors.postalCode}
+                              required
+                            />
+                          </div>
+
+                          <div className="md:col-span-1">
+                            <TextField
+                              id="country"
+                              select
+                              label="Country"
+                              variant="standard"
+                              name="country"
+                              value={formData.country}
+                              onChange={handleInputChange}
+                              autoComplete="country"
+                              error={!!errors.country}
+                              helperText={errors.country}
+                              required
+                            >
+                              <MenuItem value="">Select a country</MenuItem>
+                              {countries.map((country) => (
+                                <MenuItem key={country} value={country}>
+                                  {country}
+                                </MenuItem>
+                              ))}
+                            </TextField>
+                          </div>
+                        </div>
+                      </Box>
+                    </div>
+                  </div>
+                )} */}
+                {activeStep === "shipping" && (
+                  <div className="space-y-6 p-2">
+                    <Box
+                      component="form"
+                      sx={{ "& .MuiTextField-root": { m: 3 } }}
+                      noValidate
+                      autoComplete="off"
+                    >
+                      {/* Full Name and Email in one row */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <TextField
                           id="fullName"
-                          type="text"
+                          label="Full Name"
+                          variant="standard"
                           name="fullName"
                           value={formData.fullName}
                           onChange={handleInputChange}
                           autoComplete="name"
-                          className={`mt-1 block w-full p-2 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 ${
-                            errors.fullName
-                              ? "border-red-500"
-                              : "border-gray-300"
-                          }`}
-                          aria-invalid={errors.fullName ? "true" : "false"}
-                          aria-describedby={
-                            errors.fullName ? "fullName-error" : undefined
-                          }
+                          error={!!errors.fullName}
+                          helperText={errors.fullName}
+                          required
+                          fullWidth
                         />
-                        {errors.fullName && (
-                          <p
-                            className="text-red-500 text-sm mt-1"
-                            id="fullName-error"
-                          >
-                            {errors.fullName}
-                          </p>
-                        )}
-                      </div>
 
-                      <div>
-                        <label
-                          htmlFor="email"
-                          className="block text-sm font-medium text-gray-700"
-                        >
-                          Email Address <span className="text-red-500">*</span>
-                        </label>
-                        <input
+                        <TextField
                           id="email"
+                          label="Email Address"
+                          variant="standard"
                           type="email"
                           name="email"
                           value={formData.email}
                           onChange={handleInputChange}
                           autoComplete="email"
-                          className={`mt-1 p-2 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 ${
-                            errors.email ? "border-red-500" : "border-gray-300"
-                          }`}
-                          aria-invalid={errors.email ? "true" : "false"}
-                          aria-describedby={
-                            errors.email ? "email-error" : undefined
-                          }
+                          error={!!errors.email}
+                          helperText={errors.email}
+                          required
+                          fullWidth
                         />
-                        {errors.email && (
-                          <p
-                            className="text-red-500 text-sm mt-1"
-                            id="email-error"
-                          >
-                            {errors.email}
-                          </p>
-                        )}
                       </div>
-                    </div>
 
-                    <div>
-                      <label
-                        htmlFor="phone"
-                        className="block  text-sm font-medium text-gray-700"
-                      >
-                        Phone Number
-                      </label>
-                      <input
-                        id="phone"
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        autoComplete="tel"
-                        className="mt-1 block p-2 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                      />
-                    </div>
+                      {/* Phone and Address in one row */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <TextField
+                          id="phone"
+                          label="Phone Number"
+                          variant="standard"
+                          type="tel"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                          autoComplete="tel"
+                          fullWidth
+                        />
 
-                    <div>
-                      <label
-                        htmlFor="address"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        Street Address <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        id="address"
-                        type="text"
-                        name="address"
-                        value={formData.address}
-                        onChange={handleInputChange}
-                        autoComplete="street-address"
-                        className={`mt-1 p-2 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 ${
-                          errors.address ? "border-red-500" : "border-gray-300"
-                        }`}
-                        aria-invalid={errors.address ? "true" : "false"}
-                        aria-describedby={
-                          errors.address ? "address-error" : undefined
-                        }
-                      />
-                      {errors.address && (
-                        <p
-                          className="text-red-500 text-sm mt-1"
-                          id="address-error"
-                        >
-                          {errors.address}
-                        </p>
-                      )}
-                    </div>
+                        <TextField
+                          id="address"
+                          label="Street Address"
+                          variant="standard"
+                          name="address"
+                          value={formData.address}
+                          onChange={handleInputChange}
+                          autoComplete="street-address"
+                          error={!!errors.address}
+                          helperText={errors.address}
+                          required
+                          fullWidth
+                        />
+                      </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      <div className="md:col-span-1">
-                        <label
-                          htmlFor="city"
-                          className="block text-sm font-medium text-gray-700"
-                        >
-                          City <span className="text-red-500">*</span>
-                        </label>
-                        <input
+                      {/* City, Postal Code, and Country in one row (3 columns) */}
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <TextField
                           id="city"
-                          type="text"
+                          label="City"
+                          variant="standard"
                           name="city"
                           value={formData.city}
                           onChange={handleInputChange}
                           autoComplete="address-level2"
-                          className={`mt-1 p-2 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 ${
-                            errors.city ? "border-red-500" : "border-gray-300"
-                          }`}
-                          aria-invalid={errors.city ? "true" : "false"}
-                          aria-describedby={
-                            errors.city ? "city-error" : undefined
-                          }
+                          error={!!errors.city}
+                          helperText={errors.city}
+                          required
+                          fullWidth
                         />
-                        {errors.city && (
-                          <p
-                            className="text-red-500 text-sm mt-1"
-                            id="city-error"
-                          >
-                            {errors.city}
-                          </p>
-                        )}
-                      </div>
 
-                      <div className="md:col-span-1">
-                        <label
-                          htmlFor="postalCode"
-                          className="block text-sm font-medium text-gray-700"
-                        >
-                          Postal Code <span className="text-red-500">*</span>
-                        </label>
-                        <input
+                        <TextField
                           id="postalCode"
-                          type="text"
+                          label="Postal Code"
+                          variant="standard"
                           name="postalCode"
                           value={formData.postalCode}
                           onChange={handleInputChange}
                           autoComplete="postal-code"
-                          className={`mt-1 p-2 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 ${
-                            errors.postalCode
-                              ? "border-red-500"
-                              : "border-gray-300"
-                          }`}
-                          aria-invalid={errors.postalCode ? "true" : "false"}
-                          aria-describedby={
-                            errors.postalCode ? "postalCode-error" : undefined
-                          }
+                          error={!!errors.postalCode}
+                          helperText={errors.postalCode}
+                          required
+                          fullWidth
                         />
-                        {errors.postalCode && (
-                          <p
-                            className="text-red-500 text-sm mt-1"
-                            id="postalCode-error"
-                          >
-                            {errors.postalCode}
-                          </p>
-                        )}
-                      </div>
 
-                      <div className="md:col-span-1">
-                        <label
-                          htmlFor="country"
-                          className="block text-sm font-medium text-gray-700"
-                        >
-                          Country <span className="text-red-500">*</span>
-                        </label>
-                        <select
+                        <TextField
                           id="country"
+                          select
+                          label="Country"
+                          variant="standard"
                           name="country"
                           value={formData.country}
                           onChange={handleInputChange}
                           autoComplete="country"
-                          className={`mt-1 p-2 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 ${
-                            errors.country
-                              ? "border-red-500"
-                              : "border-gray-300"
-                          }`}
-                          aria-invalid={errors.country ? "true" : "false"}
-                          aria-describedby={
-                            errors.country ? "country-error" : undefined
-                          }
+                          error={!!errors.country}
+                          helperText={errors.country}
+                          required
+                          fullWidth
                         >
-                          <option value="">Select a country</option>
+                          <MenuItem value="">Select a country</MenuItem>
                           {countries.map((country) => (
-                            <option key={country} value={country}>
+                            <MenuItem key={country} value={country}>
                               {country}
-                            </option>
+                            </MenuItem>
                           ))}
-                        </select>
-                        {errors.country && (
-                          <p
-                            className="text-red-500 text-sm mt-1 p-2"
-                            id="country-error"
-                          >
-                            {errors.country}
-                          </p>
-                        )}
+                        </TextField>
                       </div>
-                    </div>
+                    </Box>
                   </div>
                 )}
-
                 {/* Payment Method */}
                 {activeStep === "payment" && (
                   <div className="space-y-4">
@@ -859,6 +881,33 @@ export default function CheckoutPage() {
           </div>
         )}
       </div>
+      <section className="py-16 bg-sky-950 text-white">
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="font-black text-3xl md:text-4xl mb-6">
+            Ready to Experience ONE?
+          </h2>
+          <p className="text-lg max-w-2xl mx-auto mb-8">
+            Join thousands of satisfied customers who trust us for their fashion
+            needs.
+          </p>
+          <div className="flex flex-col cursor-pointer sm:flex-row gap-4 justify-center">
+            <Link href="../products">
+              <button
+                onClick={() => router.push("/products")}
+                className="bg-[#f7d0b6] text-sky-950 hover:bg-opacity-90 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full"
+              >
+                Shop Now
+              </button>
+            </Link>
+            <button
+              onClick={() => router.push("/contact")}
+              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-sky-950 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full"
+            >
+              Contact Us
+            </button>
+          </div>
+        </div>
+      </section>
     </ProtectedRoute>
   );
 }

@@ -43,6 +43,33 @@ export default function ProductsPage() {
           ))}
         </div>
       </div>
+      <section className="py-16 bg-sky-950 mt-10 text-white">
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="font-black text-3xl md:text-4xl mb-6">
+            Ready to Experience ONE?
+          </h2>
+          <p className="text-lg max-w-2xl mx-auto mb-8">
+            Join thousands of satisfied customers who trust us for their fashion
+            needs.
+          </p>
+          <div className="flex flex-col cursor-pointer sm:flex-row gap-4 justify-center">
+            <Link href="../products">
+              <button
+                onClick={() => router.push("/products")}
+                className="bg-[#f7d0b6] text-sky-950 hover:bg-opacity-90 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full"
+              >
+                Shop Now
+              </button>
+            </Link>
+            <button
+              onClick={() => router.push("/contact")}
+              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-sky-950 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full"
+            >
+              Contact Us
+            </button>
+          </div>
+        </div>
+      </section>
     </ProtectedRoute>
   );
 }

@@ -2,7 +2,9 @@
 import Navbar from "../components/Navbar";
 import ProtectedRoute from "../components/ProtectedRoute";
 import { useState } from "react";
-
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
@@ -42,7 +44,7 @@ export default function ContactPage() {
                 CONNECT WITH US
               </span>
               <h1 className="text-white font-extrabold text-3xl sm:text-5xl lg:text-5xl mb-6 leading-tight">
-                We're here to help!
+                We're here to <span className="text-[#dc2626]">help!</span>
               </h1>
               <p className="text-stone-100 text-lg mb-8 max-w-lg mx-auto md:mx-0">
                 Reach out for any questions or support, and we'll get back to
@@ -64,7 +66,7 @@ export default function ContactPage() {
                 inquiries.
               </p>
             </div>
-            <form
+            {/* <form
               onSubmit={handleSubmit}
               className="w-full md:w-1/2 bg-[#f7d0b6] p-8 rounded-xl shadow-xl"
             >
@@ -104,6 +106,126 @@ export default function ContactPage() {
               >
                 Send Message
               </button>
+            </form> */}
+
+            <form
+              onSubmit={handleSubmit}
+              className="w-full md:w-1/2 bg-[#0a3a5a] p-8 rounded-xl shadow-xl"
+            >
+              <Box sx={{ "& .MuiTextField-root": { mb: 3, width: "100%" } }}>
+                <TextField
+                  variant="standard"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  label="Your Name"
+                  InputLabelProps={{
+                    sx: {
+                      color: "#ffffff",
+                      "&.Mui-focused": {
+                        color: "#ffffff",
+                      },
+                    },
+                  }}
+                  InputProps={{
+                    sx: {
+                      color: "white", // Sets the input text color to white
+                      "&:before": {
+                        borderBottomColor: "#ffffff", // Underline color (default state)
+                      },
+                      "&:after": {
+                        borderBottomColor: "#ffffff", // Underline color (focused state)
+                      },
+                      "&:hover:not(.Mui-disabled):before": {
+                        borderBottomColor: "#ffffff", // Underline color (hover state)
+                      },
+                    },
+                  }}
+                />
+
+                <TextField
+                  variant="standard"
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  label="Your Email"
+                  InputLabelProps={{
+                    sx: {
+                      color: "#ffffff",
+                      "&.Mui-focused": {
+                        color: "#ffffff",
+                      },
+                    },
+                  }}
+                  InputProps={{
+                    sx: {
+                      color: "white",
+                      "&:before": {
+                        borderBottomColor: "#ffffff",
+                      },
+                      "&:after": {
+                        borderBottomColor: "#ffffff",
+                      },
+                      "&:hover:not(.Mui-disabled):before": {
+                        borderBottomColor: "#ffffff",
+                      },
+                    },
+                  }}
+                />
+
+                <TextField
+                  variant="standard"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  label="Your Message"
+                  multiline
+                  rows={4}
+                  InputLabelProps={{
+                    sx: {
+                      color: "#ffffff",
+                      "&.Mui-focused": {
+                        color: "#ffffff",
+                      },
+                    },
+                  }}
+                  InputProps={{
+                    sx: {
+                      color: "white",
+                      "&:before": {
+                        borderBottomColor: "#ffffff",
+                      },
+                      "&:after": {
+                        borderBottomColor: "#ffffff",
+                      },
+                      "&:hover:not(.Mui-disabled):before": {
+                        borderBottomColor: "#ffffff",
+                      },
+                    },
+                  }}
+                />
+
+                <Button
+                  type="submit"
+                  variant="contained"
+                  fullWidth
+                  sx={{
+                    backgroundColor: "#0c4a6e",
+                    color: "white",
+                    textTransform: "uppercase",
+                    fontWeight: "semibold",
+                    py: 1.5,
+                    px: 4,
+                    borderRadius: "9999px",
+                    "&:hover": {
+                      backgroundColor: "#0a3a5a",
+                    },
+                  }}
+                >
+                  Send Message
+                </Button>
+              </Box>
             </form>
           </div>
         </section>
