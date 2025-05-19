@@ -4,23 +4,25 @@ import { store } from "../redux/store";
 import "./globals.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { usePathname } from "next/navigation";
+import ToastProvider from "./components/ToastProvider";
 
-const queryClient = new QueryClient();
-
+// Create a new QueryClient for each request
 export default function RootLayout({ children }) {
   const pathname = usePathname();
+  const queryClient = new QueryClient();
 
   return (
-    <Provider store={store}>
-      <html lang="en">
-        <body>
+    <html lang="en">
+      <body suppressHydrationWarning={true}>
+        <Provider store={store}>
           <QueryClientProvider client={queryClient}>
+            <ToastProvider />
             <div className="page-transition" key={pathname}>
               {children}
             </div>
           </QueryClientProvider>
-        </body>
-      </html>
-    </Provider>
+        </Provider>
+      </body>
+    </html>
   );
 }

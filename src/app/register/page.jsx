@@ -2,66 +2,82 @@
 import { useMutation } from "@tanstack/react-query";
 import { registerUser } from "@/lib/api";
 import React, { useState } from "react";
-
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+
 export default function SignupForm() {
   const [successMessage, setSuccessMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [agreeToTerms, setAgreeToTerms] = useState(false);
   const [passwordError, setPasswordError] = useState("");
+  const [formError, setFormError] = useState("");
   const Router = useRouter();
+
   const { mutate, isLoading, error } = useMutation({
     mutationFn: registerUser,
     onSuccess: (data) => {
-      Router.push("/login");
       setSuccessMessage("Registration successful!");
-      console.log("Registration data:", data);
+      toast.success("Registration successful!");
+      setTimeout(() => {
+        Router.push("/login");
+      }, 1500);
+    },
+    onError: (err) => {
+      toast.error(err.message || "Registration failed. Please try again.");
     },
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (!agreeToTerms) {
-      alert("You must agree to the Terms and Conditions to sign up.");
-      return;
-    }
+    setFormError("");
+    setPasswordError("");
 
     const username = e.target.username.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
     const confirmPassword = e.target.confirmPassword.value;
-    setPasswordError("");
+
+    // First check password match
     if (password !== confirmPassword) {
       setPasswordError("Passwords don't match!");
+      toast.error("Passwords don't match!");
       return;
     }
 
+    // Then check terms agreement
+    if (!agreeToTerms) {
+      setFormError("You must agree to the Terms and Conditions to sign up.");
+      toast.error("You must agree to the Terms and Conditions");
+      return;
+    }
+
+    // If all validation passes, submit form
     mutate({ username, email, password });
   };
+
   return (
-    <section className="min-h-screen w-full bg-[#f7f9fb] flex items-center justify-center px-4 py-10">
-      <div className="max-w-6xl w-full bg-[#f7f9fb] rounded-lg overflow-hidden flex flex-col lg:flex-row">
-        <div className="w-full lg:w-1/2 flex justify-center items-center p-6">
+    <section className="min-h-screen w-full bg-[#f7f9fb] flex items-center justify-center px-4 py-4">
+      <div className="max-w-5xl w-full bg-[#f7f9fb] rounded-lg overflow-hidden flex flex-col lg:flex-row">
+        <div className="w-full lg:w-1/2 flex justify-center items-center p-4">
           <Image
             src="/image/login.png"
             alt="Login illustration"
             width={700}
             height={500}
-            className="w-full h-auto max-w-[200px] md:max-w-[400px]"
+            className="w-full h-auto max-w-[180px] md:max-w-[300px]"
             priority
           />
         </div>
 
-        <div className="w-full lg:w-1/2 p-8 bg-white shadow-md rounded-lg">
-          <h2 className="text-2xl font-bold text-sky-950 mb-6 text-center">
+        <div className="w-full lg:w-1/2 p-5 bg-white shadow-md rounded-lg">
+          <h2 className="text-xl font-bold text-sky-950 mb-4 text-center">
             Create Your Account
           </h2>
 
-          <div className="flex justify-center mb-6 gap-2">
+          <div className="flex justify-center mb-3 gap-2">
             <button
               type="button"
               className="social-button hover:bg-sky-900 cursor-pointer"
@@ -108,15 +124,15 @@ export default function SignupForm() {
             </button>
           </div>
 
-          <div className="my-6 flex items-center before:flex-1 before:border-t before:border-gray-300 after:flex-1 after:border-t after:border-gray-300">
-            <p className="mx-4 mb-0 text-center font-semibold text-gray-500">
+          <div className="my-3 flex items-center before:flex-1 before:border-t before:border-gray-300 after:flex-1 after:border-t after:border-gray-300">
+            <p className="mx-4 mb-0 text-center font-semibold text-xs text-gray-500">
               OR
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4 mx-auto ">
             <div>
-              <label className="block mb-1 text-sm font-medium text-gray-700">
+              <label className="block mb-1 text-xs font-medium text-gray-700">
                 Username
               </label>
               <input
@@ -124,12 +140,12 @@ export default function SignupForm() {
                 name="username"
                 required
                 placeholder="Enter your name"
-                className="w-full border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-950"
+                className="w-full border border-gray-300 rounded-md px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-950"
               />
             </div>
 
             <div>
-              <label className="block mb-1 text-sm font-medium text-gray-700">
+              <label className="block mb-1 text-xs font-medium text-gray-700">
                 Email
               </label>
               <input
@@ -137,51 +153,53 @@ export default function SignupForm() {
                 name="email"
                 required
                 placeholder="Enter your email"
-                className="w-full border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-950"
+                className="w-full border border-gray-300 rounded-md px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-950"
               />
             </div>
 
-            <div>
-              <label className="block mb-1 text-sm font-medium text-gray-700">
-                Password
-              </label>
-              <div className="relative">
-                <input
-                  type={showPassword ? "text" : "password"}
-                  name="password"
-                  required
-                  placeholder="Create a password"
-                  className="w-full border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-950"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-3 text-sm text-gray-500 cursor-pointer"
-                >
-                  {showPassword ? "Hide" : "Show"}
-                </button>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div>
+                <label className="block mb-1 text-xs font-medium text-gray-700">
+                  Password
+                </label>
+                <div className="relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    required
+                    placeholder="Create a password"
+                    className="w-full border border-gray-300 rounded-md px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-950"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-3 text-xs text-gray-500 cursor-pointer"
+                  >
+                    {showPassword ? "Hide" : "Show"}
+                  </button>
+                </div>
               </div>
-            </div>
 
-            <div>
-              <label className="block mb-1 text-sm font-medium text-gray-700">
-                Confirm Password
-              </label>
-              <div className="relative">
-                <input
-                  type={showConfirmPassword ? "text" : "password"}
-                  name="confirmPassword"
-                  required
-                  placeholder="Confirm your password"
-                  className="w-full border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-950"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute inset-y-0 right-3 text-sm text-gray-500 cursor-pointer"
-                >
-                  {showConfirmPassword ? "Hide" : "Show"}
-                </button>
+              <div>
+                <label className="block mb-1 text-xs font-medium text-gray-700">
+                  Confirm Password
+                </label>
+                <div className="relative">
+                  <input
+                    type={showConfirmPassword ? "text" : "password"}
+                    name="confirmPassword"
+                    required
+                    placeholder="Confirm your password"
+                    className="w-full border border-gray-300 rounded-md px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-950"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    className="absolute inset-y-0 right-3 text-xs text-gray-500 cursor-pointer"
+                  >
+                    {showConfirmPassword ? "Hide" : "Show"}
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -191,10 +209,9 @@ export default function SignupForm() {
                 checked={agreeToTerms}
                 onChange={(e) => setAgreeToTerms(e.target.checked)}
                 id="terms"
-                className="mr-2 h-4 w-4 border-gray-300 text-sky-950 focus:ring-sky-950"
-                required
+                className="mr-2 h-3.5 w-3.5 border-gray-300 text-sky-950 focus:ring-sky-950"
               />
-              <label htmlFor="terms" className="text-sm text-gray-600">
+              <label htmlFor="terms" className="text-xs text-gray-600">
                 I agree to the{" "}
                 <a href="#" className="text-sky-950 hover:text-sky-800">
                   Terms and Conditions
@@ -202,22 +219,27 @@ export default function SignupForm() {
               </label>
             </div>
 
+            {formError && (
+              <p className="mt-1 text-xs text-red-600">{formError}</p>
+            )}
+
             <button
               type="submit"
-              disabled={!agreeToTerms || isLoading}
-              className="w-full cursor-pointer rounded-full bg-sky-950 px-7 py-3 text-sm font-medium uppercase text-white shadow hover:bg-sky-900 transition-colors"
+              disabled={isLoading}
+              className="w-full cursor-pointer rounded-full bg-sky-950 px-7 py-2 text-sm font-medium uppercase text-white shadow hover:bg-sky-900 transition-colors disabled:opacity-70"
             >
               {isLoading ? "Registering..." : "Register"}
             </button>
-            {error && <p className="text-red-600 text-sm">{error.message}</p>}
+
+            {error && <p className="text-red-600 text-xs">{error.message}</p>}
             {successMessage && (
-              <p className="text-green-600 text-sm">{successMessage}</p>
+              <p className="text-green-600 text-xs">{successMessage}</p>
             )}
             {passwordError && (
-              <p className="mt-1 text-sm text-red-600">{passwordError}</p>
+              <p className="mt-1 text-xs text-red-600">{passwordError}</p>
             )}
 
-            <div className="mt-6 text-center text-sm text-gray-600">
+            <div className="mt-3 text-center text-xs text-gray-600">
               Already have an account?{" "}
               <Link
                 href="/login"
@@ -232,8 +254,8 @@ export default function SignupForm() {
 
       <style jsx>{`
         .social-button {
-          height: 36px;
-          width: 36px;
+          height: 32px;
+          width: 32px;
           border-radius: 9999px;
           background-color: #0c4a6e;
           color: white;
