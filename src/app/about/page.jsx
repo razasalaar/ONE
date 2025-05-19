@@ -205,7 +205,7 @@ export default function About() {
               },
             ].map((member, index) => (
               <div key={index} className="group text-center">
-                <div className="relative overflow-hidden rounded-xl mb-4 h-80">
+                <div className="relative overflow-hidden rounded-xl mb-4  h-90">
                   <img
                     src={member.img}
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
