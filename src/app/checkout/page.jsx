@@ -191,7 +191,7 @@ export default function CheckoutPage() {
     <ProtectedRoute>
       <Navbar />
 
-      <div className="min-h-screen bg-[#f7f9fb] py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen mt-10 bg-[#f7f9fb] py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Progress Indicator */}
           <div className="mb-8">
@@ -275,22 +275,22 @@ export default function CheckoutPage() {
               >
                 {activeStep === "shipping" && (
                   <div className="space-y-6 p-2">
-                    <Box
-                      component="form"
-                      sx={{
-                        "& .MuiTextField-root": { m: 3 },
-                        "& .MuiInputLabel-root": { color: "#0c4a6e" }, // sky-950 equiv
+                    <div
+                      className="form-container"
+                      style={{
+                        "& .MuiTextField-root": { margin: 3 },
+                        "& .MuiInputLabel-root": { color: "#0c4a6e" },
                         "& .MuiInput-underline:before": {
                           borderBottomColor: "#0c4a6e",
                         },
                         "& .MuiInput-underline:hover:not(.Mui-disabled):before":
-                          { borderBottomColor: "#0c4a6e" },
+                          {
+                            borderBottomColor: "#0c4a6e",
+                          },
                         "& .MuiInput-underline:after": {
                           borderBottomColor: "#0c4a6e",
                         },
                       }}
-                      noValidate
-                      autoComplete="off"
                     >
                       {/* Full Name and Email in one row */}
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -325,7 +325,7 @@ export default function CheckoutPage() {
                       </div>
 
                       {/* Phone and Address in one row */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 mt-6 md:grid-cols-2 gap-4">
                         <TextField
                           id="phone"
                           label="Phone Number"
@@ -354,7 +354,7 @@ export default function CheckoutPage() {
                       </div>
 
                       {/* City, Postal Code, and Country in one row (3 columns) */}
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div className="grid grid-cols-1 mt-6 md:grid-cols-3 gap-4">
                         <TextField
                           id="city"
                           label="City"
@@ -405,13 +405,13 @@ export default function CheckoutPage() {
                           ))}
                         </TextField>
                       </div>
-                    </Box>
+                    </div>
                   </div>
                 )}
                 {/* Payment Method */}
                 {activeStep === "payment" && (
                   <div className="space-y-4">
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1  sm:grid-cols-3 gap-4">
                       <button
                         type="button"
                         onClick={() => setPaymentMethod("credit-card")}
@@ -589,7 +589,7 @@ export default function CheckoutPage() {
                     onClick={
                       activeStep === "shipping" ? clearCart : handleClearCart
                     }
-                    className="w-full bg-sky-950 text-white py-3 px-4 rounded-full hover:bg-sky-900 focus:outline-none focus:ring-2 focus:ring-sky-950 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center transition-colors"
+                    className="w-full bg-sky-950 text-white cursor-pointer py-3 px-4 rounded-full hover:bg-sky-900 focus:outline-none focus:ring-2 focus:ring-sky-950 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center transition-colors"
                     aria-busy={isLoading ? "true" : "false"}
                   >
                     {isLoading ? (
@@ -702,7 +702,7 @@ export default function CheckoutPage() {
         {/* Order Confirmation Modal */}
         {showConfirmation && (
           <div
-            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
+            className="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center p-4 z-50"
             role="dialog"
             aria-modal="true"
           >
