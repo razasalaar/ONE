@@ -94,7 +94,7 @@ export default function CartPage() {
                     <div className="flex items-center border border-gray-300 rounded-md overflow-hidden">
                       <button
                         onClick={() => handleDecrement(item)}
-                        className="px-3 py-2 text-sky-950 hover:bg-gray-200 focus:outline-none disabled:opacity-50"
+                        className="px-3 py-2 text-sky-950 hover:bg-gray-200 focus:outline-none disabled:opacity-50 cursor-pointer"
                         disabled={item.quantity <= 1}
                         aria-label={`Decrease quantity of ${item.title}`}
                       >
@@ -105,7 +105,7 @@ export default function CartPage() {
                       </span>
                       <button
                         onClick={() => handleIncrement(item)}
-                        className="px-3 py-2 text-sky-950 hover:bg-gray-200 focus:outline-none"
+                        className="px-3 py-2 text-sky-950 hover:bg-gray-200 focus:outline-none cursor-pointer"
                         aria-label={`Increase quantity of ${item.title}`}
                       >
                         +
@@ -156,7 +156,7 @@ export default function CartPage() {
                   <div className="flex sm:flex-row gap-4">
                     <Link
                       href="/products"
-                      className="px-6 py-3 border border-gray-300 rounded-full hover:bg-gray-50 transition-all duration-300 text-center text-sky-950 text-sm font-semibold uppercase"
+                      className="px-6 py-3 border border-gray-300 rounded-full hover:bg-gray-50 transition-all duration-300 text-center text-sky-950 text-sm font-semibold uppercase cursor-pointer"
                       aria-label="Continue shopping"
                     >
                       Continue Shopping
@@ -164,7 +164,7 @@ export default function CartPage() {
 
                     <Link
                       href="/checkout"
-                      className="px-6 bg-sky-950 hover:bg-sky-900 text-white font-medium py-3 rounded-full transition-all duration-300 text-center text-sm font-semibold uppercase"
+                      className="px-6 bg-sky-950 hover:bg-sky-900 text-white font-medium py-3 rounded-full transition-all duration-300 text-center text-sm font-semibold uppercase cursor-pointer"
                       aria-label="Proceed to checkout"
                     >
                       Checkout

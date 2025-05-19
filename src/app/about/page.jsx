@@ -67,7 +67,7 @@ export default function About() {
               </p>
               <button
                 onClick={() => router.push("/products")}
-                className="bg-sky-950 text-white hover:bg-sky-900 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full"
+                className="bg-sky-950 text-white hover:bg-sky-900 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full cursor-pointer"
               >
                 Explore Our Collections
               </button>
@@ -241,13 +241,13 @@ export default function About() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => router.push("/products")}
-              className="bg-[#f7d0b6] text-sky-950 hover:bg-opacity-90 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full"
+              className="bg-[#f7d0b6] text-sky-950 hover:bg-opacity-90 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full cursor-pointer"
             >
               Shop Now
             </button>
             <button
               onClick={() => router.push("/contact")}
-              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-sky-950 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full"
+              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-sky-950 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full cursor-pointer"
             >
               Contact Us
             </button>

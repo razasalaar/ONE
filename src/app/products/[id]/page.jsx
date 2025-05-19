@@ -238,7 +238,7 @@ export default function ProductDetailPage() {
                     <div className="flex items-center border border-gray-300 rounded-md">
                       <button
                         onClick={() => handleQuantityChange(-1)}
-                        className="px-3 py-1 text-gray-600 hover:bg-gray-100"
+                        className="px-3 py-1 text-gray-600 hover:bg-gray-100 cursor-pointer"
                       >
                         -
                       </button>
@@ -247,7 +247,7 @@ export default function ProductDetailPage() {
                       </span>
                       <button
                         onClick={() => handleQuantityChange(1)}
-                        className="px-3 py-1 text-gray-600 hover:bg-gray-100"
+                        className="px-3 py-1 text-gray-600 hover:bg-gray-100 cursor-pointer"
                       >
                         +
                       </button>
@@ -257,12 +257,12 @@ export default function ProductDetailPage() {
                   <div className="flex space-x-4">
                     <button
                       onClick={handleAddToCart}
-                      className="flex-1 bg-sky-950 hover:bg-sky-900 text-white py-3 px-4 rounded-lg font-medium flex items-center justify-center transition-colors"
+                      className="flex-1 bg-sky-950 hover:bg-sky-900 text-white py-3 px-4 rounded-lg font-medium flex items-center justify-center transition-colors cursor-pointer"
                     >
                       <ShoppingCartIcon />
                       <span className="ml-2">Add to Cart</span>
                     </button>
-                    <button className="flex-1 border border-sky-950 text-sky-950 hover:bg-sky-50 py-3 px-4 rounded-lg font-medium transition-colors">
+                    <button className="flex-1 border border-sky-950 text-sky-950 hover:bg-sky-50 py-3 px-4 rounded-lg font-medium transition-colors cursor-pointer">
                       Buy Now
                     </button>
                   </div>

@@ -84,7 +84,7 @@ export default function LoginForm() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-3 text-sm text-gray-500"
+                  className="absolute inset-y-0 right-3 text-sm text-gray-500 cursor-pointer"
                 >
                   {showPassword ? "Hide" : "Show"}
                 </button>

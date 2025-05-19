@@ -257,7 +257,7 @@ export default function CheckoutPage() {
                 {activeStep === "payment" && (
                   <button
                     onClick={handleBackToShipping}
-                    className="text-sky-950 flex items-center hover:text-sky-800 focus:outline-none"
+                    className="text-sky-950 flex items-center hover:text-sky-800 focus:outline-none cursor-pointer"
                     aria-label="Back to shipping details"
                   >
                     <FaArrowLeft className="mr-1" /> Back
@@ -415,7 +415,7 @@ export default function CheckoutPage() {
                       <button
                         type="button"
                         onClick={() => setPaymentMethod("credit-card")}
-                        className={`p-4 border rounded-lg flex flex-col items-center justify-center transition-colors ${
+                        className={`p-4 border rounded-lg flex flex-col items-center justify-center transition-colors cursor-pointer ${
                           paymentMethod === "credit-card"
                             ? "border-sky-950 bg-sky-50"
                             : "border-gray-200 hover:bg-[#f7f9fb]"
@@ -429,7 +429,7 @@ export default function CheckoutPage() {
                       <button
                         type="button"
                         onClick={() => setPaymentMethod("paypal")}
-                        className={`p-4 border rounded-lg flex flex-col items-center justify-center transition-colors ${
+                        className={`p-4 border rounded-lg flex flex-col items-center justify-center transition-colors cursor-pointer ${
                           paymentMethod === "paypal"
                             ? "border-sky-950 bg-sky-50"
                             : "border-gray-200 hover:bg-[#f7f9fb]"
@@ -443,7 +443,7 @@ export default function CheckoutPage() {
                       <button
                         type="button"
                         onClick={() => setPaymentMethod("digital-wallet")}
-                        className={`p-4 border rounded-lg flex flex-col items-center justify-center transition-colors ${
+                        className={`p-4 border rounded-lg flex flex-col items-center justify-center transition-colors cursor-pointer ${
                           paymentMethod === "digital-wallet"
                             ? "border-sky-950 bg-sky-50"
                             : "border-gray-200 hover:bg-[#f7f9fb]"
@@ -745,7 +745,7 @@ export default function CheckoutPage() {
                   setShowConfirmation(false);
                   router.push("/");
                 }}
-                className="w-full bg-sky-950 text-white py-3 px-4 rounded-full hover:bg-sky-900 focus:outline-none focus:ring-2 focus:ring-sky-950 focus:ring-offset-2 transition-colors"
+                className="w-full bg-sky-950 text-white py-3 px-4 rounded-full hover:bg-sky-900 focus:outline-none focus:ring-2 focus:ring-sky-950 focus:ring-offset-2 transition-colors cursor-pointer"
               >
                 Continue Shopping
               </button>
@@ -764,12 +764,12 @@ export default function CheckoutPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/products">
-              <button className="bg-[#f7d0b6] text-sky-950 hover:bg-opacity-90 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full">
+              <button className="bg-[#f7d0b6] text-sky-950 hover:bg-opacity-90 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full cursor-pointer">
                 Shop Now
               </button>
             </Link>
             <Link href="/contact">
-              <button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-sky-950 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full">
+              <button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-sky-950 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full cursor-pointer">
                 Contact Us
               </button>
             </Link>

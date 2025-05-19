@@ -64,7 +64,7 @@ export default function SignupForm() {
           <div className="flex justify-center mb-6 gap-2">
             <button
               type="button"
-              className="social-button hover:bg-sky-900"
+              className="social-button hover:bg-sky-900 cursor-pointer"
               aria-label="Sign up with Facebook"
             >
               <svg
@@ -79,7 +79,7 @@ export default function SignupForm() {
 
             <button
               type="button"
-              className="social-button hover:bg-sky-900"
+              className="social-button hover:bg-sky-900 cursor-pointer"
               aria-label="Sign up with Twitter"
             >
               <svg
@@ -94,7 +94,7 @@ export default function SignupForm() {
 
             <button
               type="button"
-              className="social-button hover:bg-sky-900"
+              className="social-button hover:bg-sky-900 cursor-pointer"
               aria-label="Sign up with LinkedIn"
             >
               <svg
@@ -156,7 +156,7 @@ export default function SignupForm() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-3 text-sm text-gray-500"
+                  className="absolute inset-y-0 right-3 text-sm text-gray-500 cursor-pointer"
                 >
                   {showPassword ? "Hide" : "Show"}
                 </button>
@@ -178,7 +178,7 @@ export default function SignupForm() {
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute inset-y-0 right-3 text-sm text-gray-500"
+                  className="absolute inset-y-0 right-3 text-sm text-gray-500 cursor-pointer"
                 >
                   {showConfirmPassword ? "Hide" : "Show"}
                 </button>
