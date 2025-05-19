@@ -76,22 +76,22 @@ export default function ContactPage() {
       </div>
       <div className="relative overflow-hidden pt-16">
         {/* Hero Section */}
-        <section className="w-full h-screen overflow-hidden relative before:block before:absolute before:bg-black before:h-full before:w-full before:top-0 before:left-0 before:z-10 before:opacity-50">
+        <section className="w-full h-[50vh] sm:h-[60vh] md:h-[80vh] lg:h-screen overflow-hidden relative before:block before:absolute before:bg-black before:h-full before:w-full before:top-0 before:left-0 before:z-10 before:opacity-50">
           <img
             src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80"
             className="absolute top-0 left-0 w-full h-full object-cover"
             alt="Contact Us"
             loading="eager"
           />
-          <div className="relative z-20 container mx-auto px-6 h-full flex items-center">
-            <div className="max-w-2xl text-center md:text-left animate-fadeIn">
-              <span className="uppercase text-white text-sm font-bold mb-4 block tracking-widest">
+          <div className="relative z-20 container mx-auto px-4 sm:px-6 h-full flex items-center">
+            <div className="w-full max-w-2xl text-center md:text-left animate-fadeIn">
+              <span className="uppercase text-white text-xs sm:text-sm font-bold mb-2 sm:mb-4 block tracking-widest">
                 CONNECT WITH US
               </span>
-              <h1 className="text-white font-extrabold text-3xl sm:text-4xl lg:text-5xl mb-6 leading-tight">
+              <h1 className="text-white font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-3 sm:mb-6 leading-tight">
                 We're here to <span className="text-red-600">help!</span>
               </h1>
-              <p className="text-stone-100 text-lg mb-8 max-w-lg mx-auto md:mx-0">
+              <p className="text-stone-100 text-sm sm:text-base md:text-lg mb-4 sm:mb-8 max-w-lg mx-auto md:mx-0 p-2 sm:p-0">
                 Reach out for any questions or support, and we'll get back to
                 you as soon as possible.
               </p>
