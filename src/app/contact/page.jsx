@@ -1,16 +1,22 @@
 "use client";
 import Navbar from "../components/Navbar";
 import ProtectedRoute from "../components/ProtectedRoute";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import emailjs from "@emailjs/browser";
+
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
+  const formRef = useRef();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,8 +28,34 @@ export default function ContactPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic
-    console.log(formData);
+    setIsSubmitting(true);
+    setSubmitSuccess(false);
+    setSubmitError(null);
+
+    // Using EmailJS to send the form data
+    emailjs
+      .sendForm(
+        "service_f011r56", // User's EmailJS service ID
+        "template_06k0cw9", // User's EmailJS template ID
+        formRef.current,
+        "m5qRe_0grl291KN8n" // User's EmailJS public key
+      )
+      .then((result) => {
+        console.log("Email sent successfully:", result.text);
+        setSubmitSuccess(true);
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
+      })
+      .catch((error) => {
+        console.error("Error sending email:", error.text);
+        setSubmitError("Failed to send your message. Please try again.");
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   };
 
   return (
@@ -68,49 +100,9 @@ export default function ContactPage() {
                 inquiries.
               </p>
             </div>
-            {/* <form
-              onSubmit={handleSubmit}
-              className="w-full md:w-1/2 bg-[#f7d0b6] p-8 rounded-xl shadow-xl"
-            >
-              <div className="mb-4">
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Your Name"
-                  className="w-full px-4 py-3 rounded-full text-sky-950 focus:outline-none"
-                />
-              </div>
-              <div className="mb-4">
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Your Email"
-                  className="w-full px-4 py-3 rounded-full text-sky-950 focus:outline-none"
-                />
-              </div>
-              <div className="mb-4">
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Your Message"
-                  rows="4"
-                  className="w-full px-4 py-3 rounded-xl text-sky-950 focus:outline-none"
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full bg-sky-950 text-white hover:bg-opacity-90 transition-all duration-300 uppercase py-3 px-8 text-sm font-semibold rounded-full cursor-pointer"
-              >
-                Send Message
-              </button>
-            </form> */}
 
             <form
+              ref={formRef}
               onSubmit={handleSubmit}
               className="w-full md:w-1/2 bg-sky-950 p-8 rounded-xl shadow-xl"
             >
@@ -212,6 +204,7 @@ export default function ContactPage() {
                   type="submit"
                   variant="contained"
                   fullWidth
+                  disabled={isSubmitting}
                   sx={{
                     backgroundColor: "#f7d0b6",
                     color: "#0c4a6e",
@@ -226,8 +219,21 @@ export default function ContactPage() {
                     },
                   }}
                 >
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
+
+                {submitSuccess && (
+                  <div className="mt-4 p-3 bg-green-100 text-green-800 rounded-md">
+                    Your message has been sent successfully. We'll get back to
+                    you soon!
+                  </div>
+                )}
+
+                {submitError && (
+                  <div className="mt-4 p-3 bg-red-100 text-red-800 rounded-md">
+                    {submitError}
+                  </div>
+                )}
               </Box>
             </form>
           </div>

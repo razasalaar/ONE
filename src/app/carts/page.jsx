@@ -164,7 +164,7 @@ export default function CartPage() {
 
                     <Link
                       href="/checkout"
-                      className="px-6 bg-sky-950 hover:bg-sky-900 text-white font-medium py-3 rounded-full transition-all duration-300 text-center text-sm font-semibold uppercase cursor-pointer"
+                      className="px-6 bg-sky-950 hover:bg-sky-900 text-white  py-3 rounded-full transition-all duration-300 text-center text-sm font-semibold uppercase cursor-pointer"
                       aria-label="Proceed to checkout"
                     >
                       Checkout
