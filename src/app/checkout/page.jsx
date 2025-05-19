@@ -22,6 +22,7 @@ import { BiLoaderAlt } from "react-icons/bi";
 import ProtectedRoute from "../components/ProtectedRoute";
 
 const countries = [
+  "Pakistan",
   "United States",
   "Canada",
   "United Kingdom",
@@ -275,25 +276,9 @@ export default function CheckoutPage() {
               >
                 {activeStep === "shipping" && (
                   <div className="space-y-6 p-2">
-                    <div
-                      className="form-container"
-                      style={{
-                        "& .MuiTextField-root": { margin: 3 },
-                        "& .MuiInputLabel-root": { color: "#0c4a6e" },
-                        "& .MuiInput-underline:before": {
-                          borderBottomColor: "#0c4a6e",
-                        },
-                        "& .MuiInput-underline:hover:not(.Mui-disabled):before":
-                          {
-                            borderBottomColor: "#0c4a6e",
-                          },
-                        "& .MuiInput-underline:after": {
-                          borderBottomColor: "#0c4a6e",
-                        },
-                      }}
-                    >
+                    <div className="form-container mui-field-container">
                       {/* Full Name and Email in one row */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         <TextField
                           id="fullName"
                           label="Full Name"
@@ -306,6 +291,18 @@ export default function CheckoutPage() {
                           helperText={errors.fullName}
                           required
                           fullWidth
+                          sx={{
+                            m: 1,
+                            "& .MuiInputLabel-root": { color: "#0c4a6e" },
+                            "& .MuiInput-underline:before": {
+                              borderBottomColor: "#0c4a6e",
+                            },
+                            "& .MuiInput-underline:hover:not(.Mui-disabled):before":
+                              { borderBottomColor: "#0c4a6e" },
+                            "& .MuiInput-underline:after": {
+                              borderBottomColor: "#0c4a6e",
+                            },
+                          }}
                         />
 
                         <TextField
@@ -321,11 +318,23 @@ export default function CheckoutPage() {
                           helperText={errors.email}
                           required
                           fullWidth
+                          sx={{
+                            m: 1,
+                            "& .MuiInputLabel-root": { color: "#0c4a6e" },
+                            "& .MuiInput-underline:before": {
+                              borderBottomColor: "#0c4a6e",
+                            },
+                            "& .MuiInput-underline:hover:not(.Mui-disabled):before":
+                              { borderBottomColor: "#0c4a6e" },
+                            "& .MuiInput-underline:after": {
+                              borderBottomColor: "#0c4a6e",
+                            },
+                          }}
                         />
                       </div>
 
                       {/* Phone and Address in one row */}
-                      <div className="grid grid-cols-1 mt-6 md:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 md:mt-6 md:grid-cols-2 gap-3">
                         <TextField
                           id="phone"
                           label="Phone Number"
@@ -336,6 +345,18 @@ export default function CheckoutPage() {
                           onChange={handleInputChange}
                           autoComplete="tel"
                           fullWidth
+                          sx={{
+                            m: 1,
+                            "& .MuiInputLabel-root": { color: "#0c4a6e" },
+                            "& .MuiInput-underline:before": {
+                              borderBottomColor: "#0c4a6e",
+                            },
+                            "& .MuiInput-underline:hover:not(.Mui-disabled):before":
+                              { borderBottomColor: "#0c4a6e" },
+                            "& .MuiInput-underline:after": {
+                              borderBottomColor: "#0c4a6e",
+                            },
+                          }}
                         />
 
                         <TextField
@@ -350,11 +371,23 @@ export default function CheckoutPage() {
                           helperText={errors.address}
                           required
                           fullWidth
+                          sx={{
+                            m: 1,
+                            "& .MuiInputLabel-root": { color: "#0c4a6e" },
+                            "& .MuiInput-underline:before": {
+                              borderBottomColor: "#0c4a6e",
+                            },
+                            "& .MuiInput-underline:hover:not(.Mui-disabled):before":
+                              { borderBottomColor: "#0c4a6e" },
+                            "& .MuiInput-underline:after": {
+                              borderBottomColor: "#0c4a6e",
+                            },
+                          }}
                         />
                       </div>
 
                       {/* City, Postal Code, and Country in one row (3 columns) */}
-                      <div className="grid grid-cols-1 mt-6 md:grid-cols-3 gap-4">
+                      <div className="grid grid-cols-1 md:mt-6 md:grid-cols-3 gap-3">
                         <TextField
                           id="city"
                           label="City"
@@ -367,6 +400,18 @@ export default function CheckoutPage() {
                           helperText={errors.city}
                           required
                           fullWidth
+                          sx={{
+                            m: 1,
+                            "& .MuiInputLabel-root": { color: "#0c4a6e" },
+                            "& .MuiInput-underline:before": {
+                              borderBottomColor: "#0c4a6e",
+                            },
+                            "& .MuiInput-underline:hover:not(.Mui-disabled):before":
+                              { borderBottomColor: "#0c4a6e" },
+                            "& .MuiInput-underline:after": {
+                              borderBottomColor: "#0c4a6e",
+                            },
+                          }}
                         />
 
                         <TextField
@@ -381,6 +426,18 @@ export default function CheckoutPage() {
                           helperText={errors.postalCode}
                           required
                           fullWidth
+                          sx={{
+                            m: 1,
+                            "& .MuiInputLabel-root": { color: "#0c4a6e" },
+                            "& .MuiInput-underline:before": {
+                              borderBottomColor: "#0c4a6e",
+                            },
+                            "& .MuiInput-underline:hover:not(.Mui-disabled):before":
+                              { borderBottomColor: "#0c4a6e" },
+                            "& .MuiInput-underline:after": {
+                              borderBottomColor: "#0c4a6e",
+                            },
+                          }}
                         />
 
                         <TextField
@@ -396,6 +453,18 @@ export default function CheckoutPage() {
                           helperText={errors.country}
                           required
                           fullWidth
+                          sx={{
+                            m: 1,
+                            "& .MuiInputLabel-root": { color: "#0c4a6e" },
+                            "& .MuiInput-underline:before": {
+                              borderBottomColor: "#0c4a6e",
+                            },
+                            "& .MuiInput-underline:hover:not(.Mui-disabled):before":
+                              { borderBottomColor: "#0c4a6e" },
+                            "& .MuiInput-underline:after": {
+                              borderBottomColor: "#0c4a6e",
+                            },
+                          }}
                         >
                           <MenuItem value="">Select a country</MenuItem>
                           {countries.map((country) => (
