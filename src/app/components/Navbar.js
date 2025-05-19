@@ -71,7 +71,7 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex w-2/6 justify-evenly font-semibold">
+        <div className="hidden md:flex w-3/5 lg:w-2/6 justify-evenly font-semibold">
           <Link
             href="/dashboard"
             className={`px-4 py-2 rounded-lg transition-colors text-gray-800 font-medium ${
@@ -92,7 +92,7 @@ export default function Navbar() {
               </Link>
               <Link
                 href="/about"
-                className={`px-4 py-2 rounded-lg transition-colors text-gray-800 font-medium ${
+                className={`px-4 py-2 rounded-lg transition-colors text-gray-800 font-medium whitespace-nowrap ${
                   pathname === "/about" ? "bg-gray-200" : "hover:bg-gray-100"
                 }`}
               >
@@ -111,7 +111,7 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Auth Buttons */}
-        <div className="hidden md:flex w-1/5 justify-evenly font-semibold items-center">
+        <div className="hidden md:flex w-1/5 justify-end gap-4 font-semibold items-center">
           {isLoggedIn ? (
             <div className="flex items-center space-x-6">
               <Link href="/carts" aria-label={`Cart with ${cartCount} items`}>
