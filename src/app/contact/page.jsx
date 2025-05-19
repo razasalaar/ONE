@@ -28,6 +28,17 @@ export default function ContactPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Form validation
+    if (
+      !formData.name.trim() ||
+      !formData.email.trim() ||
+      !formData.message.trim()
+    ) {
+      setSubmitError("Please fill out all fields before sending your message.");
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitSuccess(false);
     setSubmitError(null);
@@ -78,7 +89,7 @@ export default function ContactPage() {
                 CONNECT WITH US
               </span>
               <h1 className="text-white font-extrabold text-3xl sm:text-4xl lg:text-5xl mb-6 leading-tight">
-                We're here to <span className="text-[#f7d0b6]">help!</span>
+                We're here to <span className="text-red-600">help!</span>
               </h1>
               <p className="text-stone-100 text-lg mb-8 max-w-lg mx-auto md:mx-0">
                 Reach out for any questions or support, and we'll get back to
@@ -113,6 +124,7 @@ export default function ContactPage() {
                   value={formData.name}
                   onChange={handleChange}
                   label="Your Name"
+                  required
                   InputLabelProps={{
                     sx: {
                       color: "#ffffff",
@@ -144,6 +156,7 @@ export default function ContactPage() {
                   value={formData.email}
                   onChange={handleChange}
                   label="Your Email"
+                  required
                   InputLabelProps={{
                     sx: {
                       color: "#ffffff",
@@ -176,6 +189,7 @@ export default function ContactPage() {
                   label="Your Message"
                   multiline
                   rows={4}
+                  required
                   InputLabelProps={{
                     sx: {
                       color: "#ffffff",

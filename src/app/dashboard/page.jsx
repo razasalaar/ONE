@@ -11,12 +11,12 @@ export default function Dashboard() {
     <>
       <Navbar />
 
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden pt-16">
         {/* Hero Section */}
         <section className="w-full h-screen overflow-hidden relative before:block before:absolute before:bg-black before:h-full before:w-full before:top-0 before:left-0 before:z-10 before:opacity-50">
           <img
             src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80"
-            className="absolute top-0 left-0 w-full h-full object-cover "
+            className="absolute top-0 left-0 w-full h-full object-cover"
             alt="Fashion"
             loading="eager"
           />
